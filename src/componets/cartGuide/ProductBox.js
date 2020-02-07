@@ -87,14 +87,15 @@ function ProductBox(props) {
   if(quantity > 0){
     return (
         <>
+
         <ProductBoxContainer>
     
             <ProductTitle>{title}<br/>{weight}</ProductTitle>
             <ProductPrice>€ {price}</ProductPrice>
             <ProductQuantity>{quantity}</ProductQuantity>    
             <CounterButtons>
-                <AddButton onClick={ addQuantity }><img src={plusIcon}/></AddButton>
-                <SubtractButton onClick={ minusQuantity }><img src={quantity == 1 ? crossIcon : minusIcon}/></SubtractButton>
+                <AddButton onClick={ addQuantity }><img src={plusIcon} alt="plus icon"/></AddButton>
+                <SubtractButton onClick={ minusQuantity }><img src={quantity === 1 ? crossIcon : minusIcon} alt="minus icon"/></SubtractButton>
             </CounterButtons>
     
         </ProductBoxContainer>
