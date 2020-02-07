@@ -43,9 +43,9 @@ const TotalCheckoutBar = styled.div`
 function CartGuide() {
 
   const [quantity, setQuantity] = useState(2)
-  //const price = useState(0.80) not working
-  const title = useState("Walkers Prawn Cocktail")
-  const weight = useState("25g")
+  const priceOfItem = 0.80
+  const title = "Walkers Prawn Cocktail"
+  const weight = "25g"
 
   const addQuantity = () => setQuantity(quantity + 1) 
   const minusQuantity = () => setQuantity(quantity - 1) 
@@ -62,7 +62,7 @@ function CartGuide() {
             <ProductBox 
                 title={title}
                 weight={weight}
-                price={(0.80 * quantity).toFixed(2)}
+                price={(priceOfItem * quantity).toFixed(2)}
                 quantity={quantity}
                 addQuantity={addQuantity}
                 minusQuantity={minusQuantity}
