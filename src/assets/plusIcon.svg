@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Plus</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Product-Submenu-One" transform="translate(-277.000000, -22.000000)" fill="#FEF8F3">
+            <g id="Product-Submenu">
+                <g id="Counter" transform="translate(270.000000, 15.000000)">
+                    <g id="PlusButton">
+                        <g id="Plus" transform="translate(7.000000, 7.000000)">
+                            <rect id="Rectangle" x="7" y="0" width="2" height="16"></rect>
+                            <rect id="Rectangle" transform="translate(8.000000, 8.000000) rotate(90.000000) translate(-8.000000, -8.000000) " x="7" y="0" width="2" height="16"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
