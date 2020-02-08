@@ -70,22 +70,17 @@ function CartGuide() {
         </TitleContainer>
         
         <ProductsContainer>
-            <ProductBox 
-                title={arrayOfProducts[0].title}
-                weight={arrayOfProducts[0].weight}
-                price={(arrayOfProducts[0].priceOfItem * quantity).toFixed(2)}
-                quantity={quantity}
-                addQuantity={addQuantity}
-                minusQuantity={minusQuantity}
-            />
-            <ProductBox 
-                title={arrayOfProducts[1].title}
-                weight={arrayOfProducts[1].weight}
-                price={(arrayOfProducts[1].priceOfItem * quantity).toFixed(2)}
-                quantity={quantity}
-                addQuantity={addQuantity}
-                minusQuantity={minusQuantity}
-            />
+            { arrayOfProducts.map( product => {
+                return <ProductBox 
+                            title={product.title}
+                            weight={product.weight}
+                            price={(product.priceOfItem * quantity).toFixed(2)}
+                            quantity={quantity}
+                            addQuantity={addQuantity}
+                            minusQuantity={minusQuantity}
+                            key={product.title}
+                        />
+            })}
         </ProductsContainer>
 
         <TotalCheckoutBar>
