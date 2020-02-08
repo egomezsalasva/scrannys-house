@@ -49,9 +49,9 @@ function CartGuide() {
             priceOfItem: 0.80,
         },
         {
-            title: "Walkers Smoky Bacon",
-            weight: "25g",
-            priceOfItem: 0.80,
+            title: "Jaffa Cakes Cake Bar",
+            weight: "30g",
+            priceOfItem: 0.70,
         },
     ]
 
