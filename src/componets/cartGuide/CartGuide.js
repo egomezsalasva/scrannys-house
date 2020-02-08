@@ -42,13 +42,23 @@ const TotalCheckoutBar = styled.div`
 //Main Component
 function CartGuide() {
 
-  const [quantity, setQuantity] = useState(2)
-  const priceOfItem = 0.80
-  const title = "Walkers Prawn Cocktail"
-  const weight = "25g"
+    const arrayOfProducts = [
+        {
+            title: "Walkers Prawn Cocktail",
+            weight: "25g",
+            priceOfItem: 0.80,
+        },
+        {
+            title: "Walkers Smoky Bacon",
+            weight: "25g",
+            priceOfItem: 0.80,
+        },
+    ]
 
-  const addQuantity = () => setQuantity(quantity + 1) 
-  const minusQuantity = () => setQuantity(quantity - 1) 
+    const [quantity, setQuantity] = useState(2)
+
+    const addQuantity = () => setQuantity(quantity + 1) 
+    const minusQuantity = () => setQuantity(quantity - 1) 
 
     
   return (
@@ -61,9 +71,17 @@ function CartGuide() {
         
         <ProductsContainer>
             <ProductBox 
-                title={title}
-                weight={weight}
-                price={(priceOfItem * quantity).toFixed(2)}
+                title={arrayOfProducts[0].title}
+                weight={arrayOfProducts[0].weight}
+                price={(arrayOfProducts[0].priceOfItem * quantity).toFixed(2)}
+                quantity={quantity}
+                addQuantity={addQuantity}
+                minusQuantity={minusQuantity}
+            />
+            <ProductBox 
+                title={arrayOfProducts[1].title}
+                weight={arrayOfProducts[1].weight}
+                price={(arrayOfProducts[1].priceOfItem * quantity).toFixed(2)}
                 quantity={quantity}
                 addQuantity={addQuantity}
                 minusQuantity={minusQuantity}

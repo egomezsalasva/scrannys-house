@@ -16,13 +16,13 @@ const ProductsContainer = styled.div`
 `
 const LogoProducts = styled.div`
     width: 100%;
-    height: 100px;
+    height: 140px;
     margin-top: 40px;
     img{
       position: absolute;
-      height: 100px;
+      height: 140px;
       left: 50%;
-      transform: translateX(calc(-50% - 5px));
+      transform: translateX(calc(-50% - 10px));
     }
 `
 const Title = styled.h2`
