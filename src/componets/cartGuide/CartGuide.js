@@ -4,6 +4,7 @@ import styled from 'styled-components'
 //Import Components
 import ProductBox from './ProductBox'
 
+
 //Styles
 const CartGuideContainer = styled.div`
     width: 320px;
@@ -39,10 +40,11 @@ const TotalCheckoutBar = styled.div`
     background: #F9C18A;
 `
 
+
 //Main Component
 function CartGuide() {
 
-    const arrayOfProducts = [
+  const arrayOfProducts = [
         {
             title: "Walkers Prawn Cocktail",
             weight: "25g",
@@ -53,14 +55,11 @@ function CartGuide() {
             weight: "30g",
             priceOfItem: 0.70,
         },
-    ]
+    ]  
+  const [quantity, setQuantity] = useState(2)
+  const addQuantity = () => setQuantity(quantity + 1) 
+  const minusQuantity = () => setQuantity(quantity - 1) 
 
-    const [quantity, setQuantity] = useState(2)
-
-    const addQuantity = () => setQuantity(quantity + 1) 
-    const minusQuantity = () => setQuantity(quantity - 1) 
-
-    
   return (
     <>
     <CartGuideContainer>
@@ -88,7 +87,7 @@ function CartGuide() {
         </TotalCheckoutBar>
     </CartGuideContainer>
     </>
-  );
+  )
 }
 
 export default CartGuide;

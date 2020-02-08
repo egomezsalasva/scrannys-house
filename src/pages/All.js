@@ -35,7 +35,21 @@ const Title = styled.h2`
     color: #1C1B3A;
     letter-spacing: 4.3px;
 `
-
+const ProductListContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 80px;
+    
+`
+const ProductCard = styled.div`
+    width: 240px;
+    height: 300px;
+    margin: 60px 40px 0;
+    background: red;
+`
 
 function All() {
   return (
@@ -46,7 +60,32 @@ function All() {
 
         <Title>All</Title>
 
-        
+        <ProductListContainer>
+          <ProductCard>
+            
+          </ProductCard>
+          <ProductCard>
+
+          </ProductCard>
+          <ProductCard>
+
+          </ProductCard>
+          <ProductCard>
+
+          </ProductCard>
+          <ProductCard>
+
+          </ProductCard>
+          <ProductCard>
+
+          </ProductCard>
+          <ProductCard>
+
+          </ProductCard>
+          <ProductCard>
+
+          </ProductCard>
+        </ProductListContainer>
 
 
       </ProductsContainer>
