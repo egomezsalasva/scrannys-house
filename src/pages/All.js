@@ -1,9 +1,9 @@
 //Import Libraries
 import React from 'react'
 import styled from 'styled-components'
-
 //Import Images
 import logoProducts from '../assets/logoProducts.svg'
+
 
 //Styles
 const ProductsContainer = styled.div`
@@ -51,6 +51,8 @@ const ProductCard = styled.div`
     background: red;
 `
 
+
+//Main Component
 function All() {
   return (
     <>
@@ -62,7 +64,7 @@ function All() {
 
         <ProductListContainer>
           <ProductCard>
-            
+
           </ProductCard>
           <ProductCard>
 

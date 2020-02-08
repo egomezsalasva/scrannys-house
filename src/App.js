@@ -1,10 +1,13 @@
+//Import Libraries
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"; 
-
+//Import Components
 import HeaderBar from '../src/componets/HeaderBar'
 import CartGuide from '../src/componets/cartGuide/CartGuide'
 import All from '../src/pages/All'
 
+
+//Main Component
 function App() {
   return (
     <>

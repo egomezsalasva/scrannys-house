@@ -4,6 +4,7 @@ import styled from 'styled-components'
 //Import Images
 import logoHeader from '../assets/logoHeader.svg'
 
+
 //Styles
 const BarContainer = styled.div`
     width: 80px;

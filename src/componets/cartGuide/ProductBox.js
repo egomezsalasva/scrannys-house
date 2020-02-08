@@ -6,6 +6,7 @@ import plusIcon from '../../assets/plusIcon.svg'
 import minusIcon from '../../assets/minusIcon.svg'
 import crossIcon from '../../assets/crossIcon.svg'
 
+
 //Styles
 const ProductBoxContainer = styled.div`
     position: relative;
