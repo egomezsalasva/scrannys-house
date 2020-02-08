@@ -22,17 +22,32 @@ const LogoProducts = styled.div`
       position: absolute;
       height: 100px;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(calc(-50% - 5px));
     }
 `
+const Title = styled.h2`
+    width: 100%;
+    margin-top: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Montserrat-ExtraBold';
+    font-size: 28px;
+    color: #1C1B3A;
+    letter-spacing: 4.3px;
+`
+
 
 function All() {
   return (
     <>
       <ProductsContainer>
-        <LogoProducts>
-          <img src={logoProducts} alt={logoProducts} />
-        </LogoProducts>
+
+        <LogoProducts><img src={logoProducts} alt={logoProducts} /></LogoProducts>
+
+        <Title>All</Title>
+
+
+
       </ProductsContainer>
     </>
   );
