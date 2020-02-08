@@ -1,22 +1,44 @@
-import React from 'react';
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; 
 
 import HeaderBar from '../src/componets/HeaderBar'
 import CartGuide from '../src/componets/cartGuide/CartGuide'
+import All from '../src/pages/All'
 
 function App() {
   return (
     <>
-      <HeaderBar />
-      <CartGuide />
+      <Router>
+        
+        <HeaderBar />
+        <CartGuide />
 
-      {/* <All />
-      <Crisps />
-      <Biscuits />
-      <Sweets />
-      <Chocolates />
-      <Others />
+        <Switch>
 
-      <Deliveries /> */}
+          <Route path="/all">
+            <All />
+          </Route>
+          {/* <Route path="/crisps">
+            <Crisps />
+          </Route>
+          <Route path="/biscuits">
+            <Biscuits />
+          </Route>
+          <Route path="/sweets">
+            <Sweets />
+          </Route>
+          <Route path="/chocolates">
+            <Chocolates />
+          </Route>
+          <Route path="/others">
+            <Others />
+          </Route>
+          <Route path="/">
+            <Deliveries />
+          </Route> */}
+
+        </Switch>
+      </Router>
     </>
   );
 }
