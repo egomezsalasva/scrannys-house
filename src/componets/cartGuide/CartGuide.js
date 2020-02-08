@@ -49,6 +49,7 @@ function CartGuide() {
 
   const addQuantity = () => setQuantity(quantity + 1) 
   const minusQuantity = () => setQuantity(quantity - 1) 
+
     
   return (
     <>
