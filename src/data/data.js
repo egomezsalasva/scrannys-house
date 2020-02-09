@@ -4,7 +4,7 @@ const PRODUCTS_DB = [
         title: "Walkers Roast Chicken",
         weight: "25g",
         price: 0.80.toFixed(2),
-        img: "../assets/products/WalkersRoastChicken.png",
+        img: "",
         category: "crisps",
         cartQuantity: 0,
     },
