@@ -1,5 +1,5 @@
 
-const products = [
+const PRODUCTS_DB = [
     {
         title: "",
         weight: "",
