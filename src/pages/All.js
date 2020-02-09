@@ -1,6 +1,8 @@
 //Import Libraries
 import React from 'react'
 import styled from 'styled-components'
+//Import Components
+import ProductCard from '../componets/ProductCard'
 //Import Images
 import logoProducts from '../assets/logoProducts.svg'
 
@@ -44,12 +46,8 @@ const ProductListContainer = styled.div`
     margin-bottom: 80px;
     
 `
-const ProductCard = styled.div`
-    width: 240px;
-    height: 300px;
-    margin: 60px 40px 0;
-    background: red;
-`
+
+//Data
 
 
 //Main Component
@@ -63,30 +61,15 @@ function All() {
         <Title>All</Title>
 
         <ProductListContainer>
-          <ProductCard>
-
-          </ProductCard>
-          <ProductCard>
-
-          </ProductCard>
-          <ProductCard>
-
-          </ProductCard>
-          <ProductCard>
-
-          </ProductCard>
-          <ProductCard>
-
-          </ProductCard>
-          <ProductCard>
-
-          </ProductCard>
-          <ProductCard>
-
-          </ProductCard>
-          <ProductCard>
-
-          </ProductCard>
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
         </ProductListContainer>
 
 
