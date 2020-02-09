@@ -67,18 +67,21 @@ const AddItemTitle = styled.h3`
 `
 
 //Main Component
-function ProductCard() {
+function ProductCard(props) {
+
+    const { image, title, weight, price, cartQuantity} = props
+
   return (
     <>
       <ProductCardContainer>
         <ImageContainer>
-            <img src={walkersRoastChicken} alt=""/>
+            <img src={image} alt=""/>
         </ImageContainer>
-        <Title>Walkers Roast Chicken</Title>
-        <Weight>25g</Weight>
-        <Price>€ 0.80</Price>
+        <Title>{title}</Title>
+        <Weight>{weight}</Weight>
+        <Price>€ {price}</Price>
         <AddItemButton>
-            <AddItemTitle>0 +</AddItemTitle>
+            <AddItemTitle>{cartQuantity} +</AddItemTitle>
         </AddItemButton>
       </ProductCardContainer>
     </>

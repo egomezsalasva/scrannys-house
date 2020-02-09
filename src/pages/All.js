@@ -5,7 +5,10 @@ import styled from 'styled-components'
 import ProductCard from '../componets/ProductCard'
 //Import Images
 import logoProducts from '../assets/logoProducts.svg'
+//Import Data
+import PRODUCTS_DB from '../data/data'
 
+console.log(PRODUCTS_DB)
 
 //Styles
 const ProductsContainer = styled.div`
@@ -62,15 +65,15 @@ function All() {
         <Title>All</Title>
 
         <ProductListContainer>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {PRODUCTS_DB.map( (product) => {
+            return <ProductCard
+                    image={product.image}
+                    title={product.title}
+                    weight={product.weight}
+                    price={product.price}
+                    cartQuantity={product.cartQuantity}
+                  />
+          })}
         </ProductListContainer>
 
 
