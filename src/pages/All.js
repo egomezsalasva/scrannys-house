@@ -67,7 +67,7 @@ function All() {
         <ProductListContainer>
           {PRODUCTS_DB.map( (product) => {
             return <ProductCard
-                    image={product.image}
+                    image={product.img}
                     title={product.title}
                     weight={product.weight}
                     price={product.price}
