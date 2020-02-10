@@ -24,10 +24,10 @@ function App() {
           <Route path="/sweets" component={Sweets} />
           <Route path="/chocolates" component={Chocolates} />
           <Route path="/others" component={Others} />
-          <Route path="/" component={Deliveries} /> */}
+          <Route exact path="/" component={Deliveries} /> */}
           <Route component={PageNotFound} />
         </Switch>
-        
+
       </Router>
     </>
   );
