@@ -27,4 +27,5 @@ body {
 
   background: #FEF6EE url('../src/assets/textureScrannys.png');
   background-size: 200px;
+  color: var(--scrannysBlue);
 }

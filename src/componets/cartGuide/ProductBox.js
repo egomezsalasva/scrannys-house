@@ -19,7 +19,6 @@ const ProductTitle = styled.p`
     display: inline-block;
     font-family: 'Montserrat-SemiBold';
     font-size: 11px;
-    color: var(--scrannysBlue);
     letter-spacing: 0.83px;
     line-height: 14px;
     width: 190px;
@@ -31,7 +30,6 @@ const ProductPrice = styled.p`
     display: inline-block;
     font-family: 'Montserrat-SemiBold';
     font-size: 18px;
-    color: var(--scrannysBlue);
     letter-spacing: 1.5px;
     line-height: 12px;
     margin-top: 10px;
@@ -48,7 +46,6 @@ const ProductQuantity = styled.div`
     line-height: 100px;
     font-family: 'Montserrat-SemiBold';
     font-size: 18px;
-    color: var(--scrannysBlue);
     letter-spacing: 1.5px;
     transform: translateX(-1px);
 `

@@ -21,7 +21,6 @@ const TitleContainer = styled.div`
 const Title = styled.h1`
     font-family: 'Montserrat-SemiBold';
     font-size: 22px;
-    color: var(--scrannysBlue);
     letter-spacing: 2px;
     text-align: center;
     text-transform: uppercase;

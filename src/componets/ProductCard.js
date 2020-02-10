@@ -25,7 +25,6 @@ const ImageContainer = styled.div`
 const Title = styled.h4`
     font-family: 'Montserrat-ExtraBold';
     font-size: 12px;
-    color: var(--scrannysBlue);
     letter-spacing: 1px;
     margin: 0 30px;
     line-height: 15px;
@@ -42,7 +41,6 @@ const Price = styled.div`
     left: 30px;
     font-family: 'Montserrat-SemiBold';
     font-size: 18px;
-    color: var(--scrannysBlue);
     letter-spacing: 0.9px;
 `
 const AddItemButton = styled.div`
