@@ -1,3 +1,12 @@
+:root{
+  --scrannysBlue: #1C1B3A;
+  --scrannysOrange: #F9C18A;
+  --scrannysOrange50over50: #FAD0A6;
+  --scrannysOrange50: #FCE0C4;
+  --scrannysWhite: #FEF6EE;
+  --scrannysLightWhite: #FEF8F3;
+}
+
 *{
   margin: 0;
   padding: 0;

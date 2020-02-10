@@ -37,7 +37,7 @@ const Title = styled.h2`
     text-align: center;
     font-family: 'Montserrat-ExtraBold';
     font-size: 28px;
-    color: #1C1B3A;
+    color: var(--scrannysBlue);
     letter-spacing: 4.3px;
 `
 const ProductListContainer = styled.div`

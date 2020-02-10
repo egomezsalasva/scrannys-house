@@ -25,7 +25,7 @@ const ImageContainer = styled.div`
 const Title = styled.h4`
     font-family: 'Montserrat-ExtraBold';
     font-size: 12px;
-    color: #1C1B3A;
+    color: var(--scrannysBlue);
     letter-spacing: 1px;
     margin: 0 30px;
     line-height: 15px;
@@ -42,7 +42,7 @@ const Price = styled.div`
     left: 30px;
     font-family: 'Montserrat-SemiBold';
     font-size: 18px;
-    color: #1C1B3A;
+    color: var(--scrannysBlue);
     letter-spacing: 0.9px;
 `
 const AddItemButton = styled.div`
@@ -52,13 +52,13 @@ const AddItemButton = styled.div`
     right: 30px;
     width: 80px;
     height: 34px;
-    background: #1C1B3A;
+    background: var(--scrannysBlue);
     border-radius: 5px;
 `
 const AddItemTitle = styled.h3`
     font-family: 'Montserrat-SemiBold';
     font-size: 18px;
-    color: #FFFFFF;
+    color: var(--scrannysLightWhite);
     letter-spacing: 0.9px;
     text-align: center;
     width: 80px;

@@ -12,7 +12,7 @@ const CartGuideContainer = styled.div`
     position: fixed;
     top: 0;
     left: 80px;
-    background: #FCE0C4;
+    background: var(--scrannysOrange50);
 `
 const TitleContainer = styled.div`
     height: 80px;
@@ -21,7 +21,7 @@ const TitleContainer = styled.div`
 const Title = styled.h1`
     font-family: 'Montserrat-SemiBold';
     font-size: 22px;
-    color: #1C1B3A;
+    color: var(--scrannysBlue);
     letter-spacing: 2px;
     text-align: center;
     text-transform: uppercase;
@@ -37,7 +37,7 @@ const TotalCheckoutBar = styled.div`
     height: 80px;
     position: absolute;
     bottom: 0;
-    background: #F9C18A;
+    background: var(--scrannysOrange);
 `
 
 

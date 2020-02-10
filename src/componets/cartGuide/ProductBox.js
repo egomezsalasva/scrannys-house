@@ -12,14 +12,14 @@ const ProductBoxContainer = styled.div`
     position: relative;
     width: 100%;
     height: 100px;
-    background: #FAD0A6;
+    background: var(--scrannysOrange50over50);
     margin-bottom: 5px;
 `
 const ProductTitle = styled.p`
     display: inline-block;
     font-family: 'Montserrat-SemiBold';
     font-size: 11px;
-    color: #1C1B3A;
+    color: var(--scrannysBlue);
     letter-spacing: 0.83px;
     line-height: 14px;
     width: 190px;
@@ -31,7 +31,7 @@ const ProductPrice = styled.p`
     display: inline-block;
     font-family: 'Montserrat-SemiBold';
     font-size: 18px;
-    color: #1C1B3A;
+    color: var(--scrannysBlue);
     letter-spacing: 1.5px;
     line-height: 12px;
     margin-top: 10px;
@@ -48,7 +48,7 @@ const ProductQuantity = styled.div`
     line-height: 100px;
     font-family: 'Montserrat-SemiBold';
     font-size: 18px;
-    color: #1C1B3A;
+    color: var(--scrannysBlue);
     letter-spacing: 1.5px;
     transform: translateX(-1px);
 `
@@ -62,7 +62,7 @@ const CounterButtons = styled.div`
 const CounterButton = styled.div`
     width: 30px;
     height: 30px;
-    background: #1C1B3A;
+    background: var(--scrannysBlue);
     border-radius: 5px;
     img{
         margin-top: 50%;

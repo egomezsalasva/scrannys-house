@@ -12,7 +12,7 @@ const BarContainer = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    background: #1C1B3A;
+    background: var(--scrannysBlue);
 `
 const Logo = styled.img`
     position: absolute;
