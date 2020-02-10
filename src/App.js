@@ -2,9 +2,10 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"; 
 //Import Components
-import HeaderBar from '../src/componets/HeaderBar'
-import CartGuide from '../src/componets/cartGuide/CartGuide'
-import All from '../src/pages/All'
+import HeaderBar from './componets/HeaderBar'
+import CartGuide from './componets/cartGuide/CartGuide'
+import All from './pages/All'
+import PageNotFound from './pages/PageNotFound'
 
 
 //Main Component
@@ -17,30 +18,16 @@ function App() {
         <CartGuide />
 
         <Switch>
-
-          <Route path="/all">
-            <All />
-          </Route>
-          {/* <Route path="/crisps">
-            <Crisps />
-          </Route>
-          <Route path="/biscuits">
-            <Biscuits />
-          </Route>
-          <Route path="/sweets">
-            <Sweets />
-          </Route>
-          <Route path="/chocolates">
-            <Chocolates />
-          </Route>
-          <Route path="/others">
-            <Others />
-          </Route>
-          <Route path="/">
-            <Deliveries />
-          </Route> */}
-
+          <Route path="/all" component={All} />
+          {/* <Route path="/crisps" component={Crisps} />
+          <Route path="/biscuits" component={Biscuits} />
+          <Route path="/sweets" component={Sweets} />
+          <Route path="/chocolates" component={Chocolates} />
+          <Route path="/others" component={Others} />
+          <Route path="/" component={Deliveries} /> */}
+          <Route component={PageNotFound} />
         </Switch>
+        
       </Router>
     </>
   );
