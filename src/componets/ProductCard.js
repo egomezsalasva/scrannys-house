@@ -23,12 +23,12 @@ const ImageContainer = styled.div`
 const Title = styled.h4`
     font-family: 'Montserrat-ExtraBold';
     font-size: 12px;
-    letter-spacing: 1px;
+    /* letter-spacing: 1px; */
     margin: 0 30px;
     line-height: 15px;
 `
 const Weight = styled(Title)`
-    margin-top: 2px;
+    margin-top: 3px;
 `
 const Price = styled.div`
     position: absolute;
