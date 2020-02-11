@@ -1,8 +1,6 @@
 //Import Libraries
 import React from 'react'
 import styled from 'styled-components'
-//Import Images
-import walkersRoastChicken from '../assets/products/WalkersRoastChicken.png'
 
 
 //Styles

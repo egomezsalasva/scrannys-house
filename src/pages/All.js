@@ -1,5 +1,5 @@
 //Import Libraries
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 //Import Components
 import ProductCard from '../componets/ProductCard'
@@ -8,7 +8,6 @@ import logoProducts from '../assets/logoProducts.svg'
 //Import Data
 import PRODUCTS_DB from '../data/data'
 
-console.log(PRODUCTS_DB)
 
 //Styles
 const ProductsContainer = styled.div`
@@ -55,6 +54,11 @@ const ProductListContainer = styled.div`
 
 //Main Component
 function All() {
+
+  const [products, setProducts] = useState(PRODUCTS_DB)
+
+  console.log(products)
+
   return (
     <>
       <ProductsContainer>
@@ -66,6 +70,7 @@ function All() {
         <ProductListContainer>
           {PRODUCTS_DB.map( (product) => {
             return <ProductCard
+                    key={product.id}
                     image={product.img}
                     title={product.title}
                     weight={product.weight}
