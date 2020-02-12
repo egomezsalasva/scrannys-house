@@ -1,6 +1,7 @@
 //Import Libraries
 import React from 'react'
 import styled from 'styled-components'
+import LinesEllipsis from 'react-lines-ellipsis'
 
 
 //Styles
@@ -30,13 +31,16 @@ const Title = styled.h4`
     /* margin: 0 30px; */
     line-height: 15px;
 `
-const Weight = styled(Title)`
+const Weight = styled.p`
     font-family: var(--scrannysFontLight);
+    font-size: 12px;
+    line-height: 15px;
     margin-top: 5px;
 `
-const Stock = styled(Title)`
+const Stock = styled.p`
     font-family: var(--scrannysFontLight);
     font-size: 10px;
+    line-height: 15px;
     margin-top: 8px;
     span{
         color: var(--scrannysGreen);
@@ -82,14 +86,19 @@ function ProductCard(props) {
   return (
     <>
       <ProductCardContainer>
+
         <ImageContainer>
             <img src={image} alt=""/>
         </ImageContainer>
+
         <ProductDetailsContainer>
-            <Title>{title}</Title>
+            <Title>
+                <LinesEllipsis text={title} maxLine='2' ellipsis=' ...'/>
+            </Title>
             <Weight>{weight}</Weight>
-            <Stock><span>{stock} </span> left in stock</Stock>
+            <Stock><span>{stock}</span> left in stock</Stock>
         </ProductDetailsContainer>
+
         <ProductFooterContainer>
             <Price>€ {price}</Price>
             <AddItemButton>
