@@ -93,7 +93,8 @@ function ProductCard(props) {
 
         <ProductDetailsContainer>
             <Title>
-                <LinesEllipsis text={title} maxLine='2' ellipsis=' ...'/>
+                {/* BUG When it clamps it reizes to 1 line instead of showing 2 and clamping */}
+                <LinesEllipsis text={title} maxLine='2' ellipsis=' ...' basedOn='words'/>
             </Title>
             <Weight>{weight}</Weight>
             <Stock><span>{stock}</span> left in stock</Stock>
