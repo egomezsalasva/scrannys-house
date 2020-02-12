@@ -17,7 +17,7 @@ const ProductBoxContainer = styled.div`
 `
 const ProductTitle = styled.p`
     display: inline-block;
-    font-family: 'Montserrat-SemiBold';
+    font-family: var(--scrannysFontLight);
     font-size: 11px;
     letter-spacing: 0.83px;
     line-height: 14px;
@@ -28,7 +28,7 @@ const ProductTitle = styled.p`
 `
 const ProductPrice = styled.p`
     display: inline-block;
-    font-family: 'Montserrat-SemiBold';
+    font-family: var(--scrannysFontLight);
     font-size: 18px;
     letter-spacing: 1.5px;
     line-height: 12px;
@@ -44,7 +44,7 @@ const ProductQuantity = styled.div`
     height: 100px;
     text-align: center;
     line-height: 100px;
-    font-family: 'Montserrat-SemiBold';
+    font-family: var(--scrannysFontLight);
     font-size: 18px;
     letter-spacing: 1.5px;
     transform: translateX(-1px);

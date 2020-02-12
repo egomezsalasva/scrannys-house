@@ -7,8 +7,8 @@ import styled from 'styled-components'
 const ProductCardContainer = styled.div`
     position: relative;
     width: 240px;
-    height: 300px;
-    margin: 60px 40px 0;
+    height: 330px;
+    margin: 50px 40px 0;
 `
 const ImageContainer = styled.div`
     width: 100%;
@@ -20,39 +20,51 @@ const ImageContainer = styled.div`
         transform: translate(-50%, -50%) scale(0.5);
     }
 `
-const Title = styled.h4`
-    font-family: 'Montserrat-ExtraBold';
-    font-size: 12px;
-    /* letter-spacing: 1px; */
+const ProductDetailsContainer = styled.div`
+    height: calc( 30px + 5px + 15px + 10px + 10px);
     margin: 0 30px;
+`
+const Title = styled.h4`
+    font-family: var(--scrannysFontBold);
+    font-size: 12px;
+    /* margin: 0 30px; */
     line-height: 15px;
 `
 const Weight = styled(Title)`
-    margin-top: 3px;
+    font-family: var(--scrannysFontLight);
+    margin-top: 5px;
+`
+const Stock = styled(Title)`
+    font-family: var(--scrannysFontLight);
+    font-size: 10px;
+    margin-top: 8px;
+    span{
+        color: var(--scrannysGreen);
+    }
+`
+const ProductFooterContainer = styled.div`
+   height: calc(34px);
+   margin: 10px 30px 0;
 `
 const Price = styled.div`
-    position: absolute;
+    display: inline-block;
     line-height: 34px;
     transform: translateY(1px);
-    bottom: 20px;
-    bottom: 15px;
-    left: 30px;
-    font-family: 'Montserrat-SemiBold';
+    font-family: var(--scrannysFontLight);
     font-size: 18px;
     letter-spacing: 0.9px;
 `
 const AddItemButton = styled.div`
-    position: absolute;
-    bottom: 20px;
-    bottom: 15px;
-    right: 30px;
+    display: inline-block;
     width: 80px;
     height: 34px;
+    position: absolute;
+    right: 30px;
     background: var(--scrannysBlue);
     border-radius: 5px;
 `
 const AddItemTitle = styled.h3`
-    font-family: 'Montserrat-SemiBold';
+    font-family: var(--scrannysFontLight);
     font-size: 18px;
     color: var(--scrannysLightWhite);
     letter-spacing: 0.9px;
@@ -65,7 +77,7 @@ const AddItemTitle = styled.h3`
 //Main Component
 function ProductCard(props) {
 
-    const { image, title, weight, price, cartQuantity} = props
+    const { image, title, weight, stock, price, cartQuantity} = props
 
   return (
     <>
@@ -73,12 +85,18 @@ function ProductCard(props) {
         <ImageContainer>
             <img src={image} alt=""/>
         </ImageContainer>
-        <Title>{title}</Title>
-        <Weight>{weight}</Weight>
-        <Price>€ {price}</Price>
-        <AddItemButton>
-            <AddItemTitle>{cartQuantity} +</AddItemTitle>
-        </AddItemButton>
+        <ProductDetailsContainer>
+            <Title>{title}</Title>
+            <Weight>{weight}</Weight>
+            <Stock><span>{stock} </span> left in stock</Stock>
+        </ProductDetailsContainer>
+        <ProductFooterContainer>
+            <Price>€ {price}</Price>
+            <AddItemButton>
+                <AddItemTitle>{cartQuantity} +</AddItemTitle>
+            </AddItemButton>
+        </ProductFooterContainer>
+        
       </ProductCardContainer>
     </>
   );
