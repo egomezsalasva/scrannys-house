@@ -10,7 +10,7 @@ const PRODUCTS_DB = [
         inStock: true,
         stockQuantity: 3,
         inCart: false,
-        cartQuantity: 1,
+        cartQuantity: 2,
         totalPrice: 0,
     },
     {
@@ -36,7 +36,7 @@ const PRODUCTS_DB = [
         inStock: true,
         stockQuantity: 1,
         inCart: false,
-        cartQuantity: 0,
+        cartQuantity: 1,
         totalPrice: 0,
     },
     {
@@ -98,7 +98,7 @@ const PRODUCTS_DB = [
         price: 0.80.toFixed(2),
         image: "img/products/NikNaksNice.png",
         category: "crisps",
-        inStock: true,
+        inStock: false,
         stockQuantity: 0,
         inCart: false,
         cartQuantity: 0,

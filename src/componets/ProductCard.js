@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import LinesEllipsis from 'react-lines-ellipsis'
 //Import Context API (Data)
-import { ProductConsumer } from '../context'
+// import { ProductConsumer } from '../context'
 
 
 //Styles
@@ -86,7 +86,8 @@ const AddItemTitle = styled.h3`
 //Main Component
 function ProductCard(props) {
 
-    const { image, title, weight, stockQuantity, price, cartQuantity } = props.product
+  const { image, title, weight, stockQuantity, price, cartQuantity } = props.product
+
   return (
     <>
       <ProductCardContainer>

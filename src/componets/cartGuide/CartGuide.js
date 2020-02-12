@@ -1,6 +1,8 @@
 //Import Libraries
 import React, {useState} from 'react';
 import styled from 'styled-components'
+//Import Context API (Data)
+import { ProductConsumer } from '../../context'
 //Import Components
 import ProductBox from './ProductBox'
 
@@ -43,21 +45,21 @@ const TotalCheckoutBar = styled.div`
 //Main Component
 function CartGuide() {
 
-  const arrayOfProducts = [
-        {
-            title: "Walkers Prawn Cocktail",
-            weight: "25g",
-            priceOfItem: 0.80,
-        },
-        {
-            title: "Jaffa Cakes Cake Bar",
-            weight: "30g",
-            priceOfItem: 0.70,
-        },
-    ]  
-  const [quantity, setQuantity] = useState(2)
-  const addQuantity = () => setQuantity(quantity + 1) 
-  const minusQuantity = () => setQuantity(quantity - 1) 
+//   const arrayOfProducts = [
+//         {
+//             title: "Walkers Prawn Cocktail",
+//             weight: "25g",
+//             priceOfItem: 0.80,
+//         },
+//         {
+//             title: "Jaffa Cakes Cake Bar",
+//             weight: "30g",
+//             priceOfItem: 0.70,
+//         },
+//     ]  
+//   const [quantity, setQuantity] = useState(2)
+//   const addQuantity = () => setQuantity(quantity + 1) 
+//   const minusQuantity = () => setQuantity(quantity - 1) 
 
   return (
     <>
@@ -68,17 +70,21 @@ function CartGuide() {
         </TitleContainer>
         
         <ProductsContainer>
-            { arrayOfProducts.map( product => {
-                return <ProductBox 
-                            title={product.title}
-                            weight={product.weight}
-                            price={(product.priceOfItem * quantity).toFixed(2)}
-                            quantity={quantity}
-                            addQuantity={addQuantity}
-                            minusQuantity={minusQuantity}
-                            key={product.title}
-                        />
-            })}
+            <ProductConsumer>
+                { value => {
+                    return value.products.map( product => {
+                        return <ProductBox
+                                    key={product.title}
+                                    title={product.title}
+                                    weight={product.weight}
+                                    price={(product.price * product.cartQuantity).toFixed(2)}
+                                    cartQuantity={product.cartQuantity}
+                                    // addQuantity={addQuantity}
+                                    // minusQuantity={minusQuantity}
+                                />
+                    })
+                }}
+            </ProductConsumer>
         </ProductsContainer>
 
         <TotalCheckoutBar>

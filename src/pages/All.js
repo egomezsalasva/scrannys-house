@@ -70,12 +70,6 @@ function All() {
                 return <ProductCard
                         key={product.id}
                         product={product}
-                        // image={product.img}
-                        // title={product.title}
-                        // weight={product.weight}
-                        // stock={product.stockQuantity}
-                        // price={product.price}
-                        // cartQuantity={product.cartQuantity}
                       />
               })
             }}
