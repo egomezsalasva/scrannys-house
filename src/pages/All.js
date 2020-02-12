@@ -1,12 +1,12 @@
 //Import Libraries
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
+//Import Context API (Data)
+import { ProductConsumer } from '../context'
 //Import Components
 import ProductCard from '../componets/ProductCard'
 //Import Images
 import logoProducts from '../assets/logoProducts.svg'
-//Import Data
-import PRODUCTS_DB from '../data/data'
 
 
 //Styles
@@ -55,10 +55,6 @@ const ProductListContainer = styled.div`
 //Main Component
 function All() {
 
-  const [products, setProducts] = useState(PRODUCTS_DB)
-
-  console.log(products)
-
   return (
     <>
       <ProductsContainer>
@@ -68,20 +64,23 @@ function All() {
         <Title>All</Title>
 
         <ProductListContainer>
-          {PRODUCTS_DB.map( (product) => {
-            return <ProductCard
-                    key={product.id}
-                    image={product.img}
-                    title={product.title}
-                    weight={product.weight}
-                    stock={product.stockQuantity}
-                    price={product.price}
-                    cartQuantity={product.cartQuantity}
-                  />
-          })}
+          <ProductConsumer>
+            { value => {
+              return value.products.map( product => {
+                return <ProductCard
+                        key={product.id}
+                        image={product.img}
+                        title={product.title}
+                        weight={product.weight}
+                        stock={product.stockQuantity}
+                        price={product.price}
+                        cartQuantity={product.cartQuantity}
+                      />
+              })
+            }}
+          </ProductConsumer>
         </ProductListContainer>
-
-
+        
       </ProductsContainer>
     </>
   );
