@@ -80,7 +80,7 @@ const SubtractButton = styled(CounterButton)`
 //Main Component
 function ProductBox(props) {
 
-  const {title, weight, price, cartQuantity, addQuantity, minusQuantity } = props
+  const {title, weight, price, cartQuantity, addQuantity, minusQuantity } = props.productData
 
   if(cartQuantity > 0){
     return (
@@ -89,7 +89,7 @@ function ProductBox(props) {
         <ProductBoxContainer>
     
             <ProductTitle>{title}<br/>{weight}</ProductTitle>
-            <ProductPrice>€ {price}</ProductPrice>
+            <ProductPrice>€ {(price * cartQuantity).toFixed(2)}</ProductPrice>
             <ProductQuantity>{cartQuantity}</ProductQuantity>    
             <CounterButtons>
                 <AddButton onClick={ addQuantity }>

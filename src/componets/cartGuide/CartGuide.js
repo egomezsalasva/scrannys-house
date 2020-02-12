@@ -75,10 +75,11 @@ function CartGuide() {
                     return value.products.map( product => {
                         return <ProductBox
                                     key={product.title}
-                                    title={product.title}
-                                    weight={product.weight}
-                                    price={(product.price * product.cartQuantity).toFixed(2)}
-                                    cartQuantity={product.cartQuantity}
+                                    // title={product.title}
+                                    // weight={product.weight}
+                                    // price={(product.price * product.cartQuantity).toFixed(2)}
+                                    // cartQuantity={product.cartQuantity}
+                                    productData={product}
                                     // addQuantity={addQuantity}
                                     // minusQuantity={minusQuantity}
                                 />

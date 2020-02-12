@@ -69,7 +69,7 @@ function All() {
               return value.products.map( product => {
                 return <ProductCard
                         key={product.id}
-                        product={product}
+                        productData={product}
                       />
               })
             }}

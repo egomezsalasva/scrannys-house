@@ -86,7 +86,7 @@ const AddItemTitle = styled.h3`
 //Main Component
 function ProductCard(props) {
 
-  const { image, title, weight, stockQuantity, price, cartQuantity } = props.product
+  const { image, title, weight, stockQuantity, price, cartQuantity } = props.productData
 
   return (
     <>
