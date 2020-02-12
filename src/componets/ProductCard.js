@@ -22,6 +22,7 @@ const ImageContainer = styled.div`
     }
 `
 const ProductDetailsContainer = styled.div`
+    position: relative;
     height: calc( 30px + 5px + 15px + 10px + 10px);
     margin: 0 30px;
 `
@@ -38,6 +39,8 @@ const Weight = styled.p`
     margin-top: 5px;
 `
 const Stock = styled.p`
+    position: absolute;
+    bottom: 0;
     font-family: var(--scrannysFontLight);
     font-size: 10px;
     line-height: 15px;
@@ -97,7 +100,7 @@ function ProductCard(props) {
                 <LinesEllipsis text={title} maxLine='2' ellipsis=' ...' basedOn='words'/>
             </Title>
             <Weight>{weight}</Weight>
-            <Stock><span>{stock}</span> left in stock</Stock>
+            <Stock><span>{stock}</span> in stock</Stock>
         </ProductDetailsContainer>
 
         <ProductFooterContainer>
