@@ -2,6 +2,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import LinesEllipsis from 'react-lines-ellipsis'
+//Import Context API (Data)
+import { ProductConsumer } from '../context'
 
 
 //Styles
@@ -84,8 +86,7 @@ const AddItemTitle = styled.h3`
 //Main Component
 function ProductCard(props) {
 
-    const { image, title, weight, stock, price, cartQuantity} = props
-
+    const { image, title, weight, stockQuantity, price, cartQuantity } = props.product
   return (
     <>
       <ProductCardContainer>
@@ -100,7 +101,7 @@ function ProductCard(props) {
                 <LinesEllipsis text={title} maxLine='2' ellipsis=' ...' basedOn='words'/>
             </Title>
             <Weight>{weight}</Weight>
-            <Stock><span>{stock}</span> in stock</Stock>
+            <Stock><span>{stockQuantity}</span> in stock</Stock>
         </ProductDetailsContainer>
 
         <ProductFooterContainer>
