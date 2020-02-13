@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import LinesEllipsis from 'react-lines-ellipsis'
 //Import Context API (Data)
-// import { ProductConsumer } from '../context'
+import { ProductConsumer } from '../context'
 
 
 //Styles
@@ -63,14 +63,18 @@ const Price = styled.div`
     font-size: 18px;
     letter-spacing: 0.9px;
 `
-const AddItemButton = styled.div`
+const AddItemButton = styled.button`
     display: inline-block;
     width: 80px;
     height: 34px;
     position: absolute;
     right: 30px;
+    /* background: ${props => props.disabled ? "var(--scrannysRed)" : "var(--scrannysBlue)"}; */
     background: var(--scrannysBlue);
     border-radius: 5px;
+    outline: none;
+    border: none;
+    opacity: ${props => props.disabled ? 0.5 : 1};
 `
 const AddItemTitle = styled.h3`
     font-family: var(--scrannysFontLight);
@@ -86,7 +90,7 @@ const AddItemTitle = styled.h3`
 //Main Component
 function ProductCard(props) {
 
-  const { image, title, weight, stockQuantity, price, cartQuantity } = props.productData
+  const { id, image, title, weight, stockQuantity, price, cartQuantity } = props.productData
 
   return (
     <>
@@ -107,9 +111,20 @@ function ProductCard(props) {
 
         <ProductFooterContainer>
             <Price>€ {price}</Price>
-            <AddItemButton>
-                <AddItemTitle>{cartQuantity} +</AddItemTitle>
-            </AddItemButton>
+            <ProductConsumer>
+                { value => {
+                    if(stockQuantity > 0) {
+                        return  <AddItemButton onClick={ () => value.incrementQuantity(id) }>
+                                    <AddItemTitle>{cartQuantity} +</AddItemTitle>
+                                </AddItemButton>
+                    } else {
+                        return  <AddItemButton disabled>
+                                    <AddItemTitle>{cartQuantity} +</AddItemTitle>
+                                </AddItemButton>
+                    }
+                    
+                }}
+            </ProductConsumer>
         </ProductFooterContainer>
         
       </ProductCardContainer>

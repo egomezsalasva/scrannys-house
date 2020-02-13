@@ -17,29 +17,85 @@ class ProductProvider extends Component {
 
     //CREATING COPY OF DB DATA
     //(we want original DB to only be edited once the payment has been accepted)
-    //Once the componet is mounted insert temporary products for user to edit (copy of original DB)
-    componentDidMount(){
-        this.setTempProducts()
+        //Once the componet is mounted insert temporary products for user to edit (copy of original DB)
+        componentDidMount(){
+            this.setTempProducts()
+        }
+        //Create a copy of the Product DB in order to edit without overwriting initial DB. 
+        //Send the products to the empty products array in state.
+        setTempProducts = () => {
+            //Initialize with empty array
+            let tempProducts = []
+            PRODUCTS_DB.forEach( product => {
+                //Creates copy of products in DB
+                const singleProduct = {...product}
+                //Adds each copy to the empty array
+                tempProducts = [...tempProducts, singleProduct]
+            })
+            //Pastes copy to state
+            this.setState( () => {
+                return{products: tempProducts}
+            })
+        }
+    //
+
+    //FIND CORRECT PRODUCT FROM PRODUCTS STATE ARRAY
+    getProductThroughID = idArg => {
+        //See if Product ID from state matches the argument
+        const productThroughID = this.state.products.find( product => product.id === idArg )
+        //Return match
+        return productThroughID
     }
-    //Create a copy of the Product DB in order to edit without overwriting initial DB. 
-    //Send the products to the empty products array in state.
-    setTempProducts = () => {
-        let tempProducts = []
-        PRODUCTS_DB.forEach( item => {
-            const singleItem = {...item}
-            tempProducts = [...tempProducts, singleItem]
-        })
+      
+    
+    //EVENT HANDLERS
+    incrementQuantity = id => {
+
+        var tempProducts = [...this.state.products]
+        const index = tempProducts.indexOf(this.getProductThroughID(id))
+        const product = tempProducts[index]
+
+        //Check if stock is greater than 0
+        if(product.stockQuantity > 0){
+            product.inCart = true
+            //Increment Quantity
+            product.cartQuantity += 1
+            //Decrement Stock
+            product.stockQuantity -= 1
+            //Calculate new Total Price
+            product.totalPrice = (product.price * product.cartQuantity).toFixed(2)
+        } else {
+            product.inStock = false
+        }
+
+        //Set the new values
         this.setState( () => {
-            return{products: tempProducts}
+            return { products: tempProducts }
         })
     }
 
-    //EVENT HANDLERS
-    incrementQuantity = () => {
-        console.log("Increment quantity / decrement stock / if it stock reaches 0 disable button")
-    }
-    decrementQuantity = () => {
-        console.log("Decrement quantity / increment stock")
+    decrementQuantity = id => {
+
+        var tempProducts = [...this.state.products]
+        const index = tempProducts.indexOf(this.getProductThroughID(id))
+        const product = tempProducts[index]
+
+        //Decrement Quantity
+        product.cartQuantity -= 1
+        //Increment Stock
+        product.stockQuantity += 1
+        product.inStock = true
+        //Calculate new Total Price
+        product.totalPrice = (product.price * product.cartQuantity).toFixed(2)
+
+        if(product.cartQuantity === 0){
+            product.inCart = false
+        }
+        
+        //Set the new values
+        this.setState( () => {
+            return { products: tempProducts }
+        })
     }
 
 
@@ -51,11 +107,13 @@ class ProductProvider extends Component {
                 incrementQuantity: this.incrementQuantity,
                 decrementQuantity: this.decrementQuantity,
             }}>
+                {/* <button onClick={ () => { this.incrementQuantity() } } style={{ position: "absolute", zIndex: 1000, padding: "30px",}}>Test</button> */}
                 {this.props.children}
             </ProductContext.Provider>
         )
     }
 }
+
 
 //Consumer
 const ProductConsumer = ProductContext.Consumer

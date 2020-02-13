@@ -1,6 +1,8 @@
 //Import Libraries
 import React from 'react';
 import styled from 'styled-components'
+//Import Data
+import {ProductConsumer} from '../../context';
 //Import Images
 import plusIcon from '../../assets/plusIcon.svg'
 import minusIcon from '../../assets/minusIcon.svg'
@@ -56,14 +58,18 @@ const CounterButtons = styled.div`
     width: 30px;
     height: 70px;
 `
-const CounterButton = styled.div`
+const CounterButton = styled.button`
     width: 30px;
     height: 30px;
     background: var(--scrannysBlue);
     border-radius: 5px;
+    outline: none;
+    border: none;
+    opacity: ${ props => props.disabled ? 0.25 : 1 };
     img{
-        margin-top: 50%;
-        margin-left: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
     }
 `
@@ -80,25 +86,40 @@ const SubtractButton = styled(CounterButton)`
 //Main Component
 function ProductBox(props) {
 
-  const {title, weight, price, cartQuantity, addQuantity, minusQuantity } = props.productData
+  const { id, title, weight, price, cartQuantity, stockQuantity,  } = props.productData
 
   if(cartQuantity > 0){
     return (
         <>
-
         <ProductBoxContainer>
     
             <ProductTitle>{title}<br/>{weight}</ProductTitle>
             <ProductPrice>€ {(price * cartQuantity).toFixed(2)}</ProductPrice>
             <ProductQuantity>{cartQuantity}</ProductQuantity>    
             <CounterButtons>
-                <AddButton onClick={ addQuantity }>
-                    <img src={plusIcon} alt="plus icon"/>
-                </AddButton>
-                <SubtractButton onClick={ minusQuantity }>
-                    {/* <img src={cartQuantity === 1 ? crossIcon : minusIcon} alt="minus icon"/> */}
-                    <img src={minusIcon} alt="minus icon"/>
-                </SubtractButton>
+                <ProductConsumer>
+                    { value => {
+                        if( stockQuantity > 0) {
+                            return  <AddButton onClick={ () => value.incrementQuantity(id) }>
+                                        <img src={plusIcon} alt="plus icon"/>
+                                    </AddButton>
+                        } else {
+                            return  <AddButton disabled>
+                                        <img src={plusIcon} alt="plus icon"/>
+                                    </AddButton>
+                        }  
+                    }}
+                </ProductConsumer>
+                <ProductConsumer>
+                    { value => {
+                        if( cartQuantity > 0) {
+                            return  <SubtractButton onClick={ () => value.decrementQuantity(id) }>
+                                        {/* <img src={cartQuantity === 1 ? crossIcon : minusIcon} alt="minus icon"/> */}
+                                        <img src={minusIcon} alt="minus icon"/>
+                                    </SubtractButton>
+                        }  
+                    }}
+                </ProductConsumer>
             </CounterButtons>
     
         </ProductBoxContainer>

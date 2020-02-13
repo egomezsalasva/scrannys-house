@@ -45,22 +45,6 @@ const TotalCheckoutBar = styled.div`
 //Main Component
 function CartGuide() {
 
-//   const arrayOfProducts = [
-//         {
-//             title: "Walkers Prawn Cocktail",
-//             weight: "25g",
-//             priceOfItem: 0.80,
-//         },
-//         {
-//             title: "Jaffa Cakes Cake Bar",
-//             weight: "30g",
-//             priceOfItem: 0.70,
-//         },
-//     ]  
-//   const [quantity, setQuantity] = useState(2)
-//   const addQuantity = () => setQuantity(quantity + 1) 
-//   const minusQuantity = () => setQuantity(quantity - 1) 
-
   return (
     <>
     <CartGuideContainer>
@@ -74,11 +58,11 @@ function CartGuide() {
                 { value => {
                     return value.products.map( product => {
                         return <ProductBox
-                                    key={product.title}
+                                    key={product.id}
                                     productData={product}
-                                    // addQuantity={addQuantity}
-                                    // minusQuantity={minusQuantity}
-                                />
+                                    incrementQuantity="" 
+                                    decrementQuantity=""
+                                />    
                     })
                 }}
             </ProductConsumer>

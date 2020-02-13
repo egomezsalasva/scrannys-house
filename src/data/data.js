@@ -10,7 +10,7 @@ const PRODUCTS_DB = [
         inStock: true,
         stockQuantity: 3,
         inCart: false,
-        cartQuantity: 2,
+        cartQuantity: 0,
         totalPrice: 0,
     },
     {
@@ -36,7 +36,7 @@ const PRODUCTS_DB = [
         inStock: true,
         stockQuantity: 1,
         inCart: false,
-        cartQuantity: 1,
+        cartQuantity: 0,
         totalPrice: 0,
     },
     {
