@@ -107,7 +107,6 @@ class ProductProvider extends Component {
                 incrementQuantity: this.incrementQuantity,
                 decrementQuantity: this.decrementQuantity,
             }}>
-                {/* <button onClick={ () => { this.incrementQuantity() } } style={{ position: "absolute", zIndex: 1000, padding: "30px",}}>Test</button> */}
                 {this.props.children}
             </ProductContext.Provider>
         )

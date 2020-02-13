@@ -47,9 +47,6 @@ const Stock = styled.p`
     font-size: 10px;
     line-height: 15px;
     margin-top: 8px;
-    span{
-        color: var(--scrannysGreen);
-    }
 `
 const ProductFooterContainer = styled.div`
    height: calc(34px);
@@ -106,7 +103,7 @@ function ProductCard(props) {
                 <LinesEllipsis text={title} maxLine='2' ellipsis=' ...' basedOn='words'/>
             </Title>
             <Weight>{weight}</Weight>
-            <Stock><span>{stockQuantity}</span> in stock</Stock>
+            <Stock><span style={ stockQuantity > 0 ? {color: "var(--scrannysGreen)"} : {color: "var(--scrannysRed)"}}>{stockQuantity}</span> in stock</Stock>
         </ProductDetailsContainer>
 
         <ProductFooterContainer>
