@@ -16,6 +16,7 @@ class ProductProvider extends Component {
     }
 
     //CREATING COPY OF DB DATA
+    //(we want original DB to only be edited once the payment has been accepted)
     //Once the componet is mounted insert temporary products for user to edit (copy of original DB)
     componentDidMount(){
         this.setTempProducts()
