@@ -12,24 +12,43 @@ const ProductContext = React.createContext()
 class ProductProvider extends Component {
 
     state = {
-        products: PRODUCTS_DB
+        products: [],
     }
 
-    handleStock = () => {
-        console.log("Handle stock change")
+    //CREATING COPY OF DB DATA
+    //Once the componet is mounted insert temporary products for user to edit (copy of original DB)
+    componentDidMount(){
+        this.setTempProducts()
+    }
+    //Create a copy of the Product DB in order to edit without overwriting initial DB. 
+    //Send the products to the empty products array in state.
+    setTempProducts = () => {
+        let tempProducts = []
+        PRODUCTS_DB.forEach( item => {
+            const singleItem = {...item}
+            tempProducts = [...tempProducts, singleItem]
+        })
+        this.setState( () => {
+            return{products: tempProducts}
+        })
     }
 
-    addToCart = () => {
-        console.log("Handle add to cart")
+    //EVENT HANDLERS
+    incrementQuantity = () => {
+        console.log("Increment quantity / decrement stock / if it stock reaches 0 disable button")
     }
+    decrementQuantity = () => {
+        console.log("Decrement quantity / increment stock")
+    }
+
 
     render() {
         return(
             <ProductContext.Provider value={{
                 // ...this.state,
                 products: this.state.products,
-                handleStock: this.handleStock,
-                addToCart: this.addToCart,
+                incrementQuantity: this.incrementQuantity,
+                decrementQuantity: this.decrementQuantity,
             }}>
                 {this.props.children}
             </ProductContext.Provider>

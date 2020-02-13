@@ -4,7 +4,7 @@ import styled from 'styled-components'
 //Import Images
 import plusIcon from '../../assets/plusIcon.svg'
 import minusIcon from '../../assets/minusIcon.svg'
-import crossIcon from '../../assets/crossIcon.svg'
+// import crossIcon from '../../assets/crossIcon.svg'
 
 
 //Styles
