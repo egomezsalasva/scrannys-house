@@ -69,7 +69,7 @@ const CheckoutButton = styled.button`
    top: 50%;
    transform: translateY(-50%);
    background: var(--scrannysBlue);
-   color: var(--scrannysWhite);
+   color: var(--scrannysLightWhite);
    border-radius: 5px;
    position: absolute;
    right: 20px;

@@ -10,6 +10,7 @@ const BarContainer = styled.div`
     width: 80px;
     height: 100vh;
     position: fixed;
+    /* position: absolute; */
     top: 0;
     left: 0;
     background: var(--scrannysBlue);
@@ -20,6 +21,15 @@ const Logo = styled.img`
     width: 60px;
     left: 9px;
 `
+// const MunchiesButton = styled.div`
+//     width: 120px;
+//     height: 80px;
+//     background: red;
+//     transform: rotate(-90deg);
+//     position: absolute;
+//     top: 0;
+    
+// `
 
 
 //Main Component
@@ -28,6 +38,7 @@ function HeaderBar() {
     <>
     <BarContainer>
         <Logo src={logoHeader}/>
+        {/* <MunchiesButton>Munchies</MunchiesButton> */}
         {/* <Nav>
             <MunchiesNav>
                 <MunchiesButton />
