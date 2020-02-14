@@ -14,6 +14,7 @@ class ProductProvider extends Component {
     state = {
         products: [],
         cart: [],
+        cartTotal: 0,
     }
 
     //CREATING COPY OF DB DATA
@@ -63,18 +64,18 @@ class ProductProvider extends Component {
             product.cartQuantity += 1
             //Decrement Stock
             product.stockQuantity -= 1
-            //Calculate new Total Price
+            //Calculate new Total Price of Item
             product.totalPrice = (product.price * product.cartQuantity).toFixed(2)
+
         } else {
             product.inStock = false
         }
 
+
         //Set the new values
         this.setState( () => {
-            return { products: tempProducts, cart: [...this.state.cart, product] }
-        }, () => { 
-            this.addTotal() 
-        })
+            return { products: tempProducts, cart: [...this.state.cart, product]   }
+        }, () => { this.calculateCartTotal( )})
     }
 
     decrementQuantity = id => {
@@ -98,11 +99,17 @@ class ProductProvider extends Component {
         //Set the new values
         this.setState( () => {
             return { products: tempProducts }
-        })
+        }, () => { this.calculateCartTotal( )})
     }
 
-    addTotal = () => {
-        console.log("test")
+    calculateCartTotal = () => {
+
+        let cartTotal = 0
+        this.state.products.map( item => cartTotal += parseFloat(item.totalPrice) )
+
+        this.setState( () => {
+            return{ cartTotal: parseFloat(cartTotal).toFixed(2) }
+        })
     }
 
 
@@ -111,8 +118,9 @@ class ProductProvider extends Component {
             <ProductContext.Provider value={{
                 // ...this.state,
                 products: this.state.products,
+                cartTotal: this.state.cartTotal,
                 incrementQuantity: this.incrementQuantity,
-                decrementQuantity: this.decrementQuantity,
+                decrementQuantity: this.decrementQuantity, 
             }}>
                 {this.props.children}
             </ProductContext.Provider>

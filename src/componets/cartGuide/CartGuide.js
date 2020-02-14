@@ -39,8 +39,48 @@ const TotalCheckoutBar = styled.div`
     position: absolute;
     bottom: 0;
     background: var(--scrannysOrange);
+    h1{
+        display: inline-block;
+    }
 `
-
+const TotalTitle = styled.div`
+    display: inline-block;
+    font-family: var(--scrannysFontLight);
+    font-size: 16px;
+    color: var(--scrannysBlue);
+    letter-spacing: 1px;
+    line-height: 80px;
+    padding-left: 20px;
+`
+const TotalPrice = styled.div`
+    display: inline-block;
+    font-family: var(--scrannysFontBold);
+    font-size: 18px;
+    color: var(--scrannysBlue);
+    letter-spacing: 1px;
+    line-height: 80px;
+    padding-left: 5px;
+`
+const CheckoutButton = styled.button`
+   text-transform: uppercase;
+   width: 120px;
+   height: 38px;
+   line-height: 38px;
+   top: 50%;
+   transform: translateY(-50%);
+   background: var(--scrannysBlue);
+   color: var(--scrannysWhite);
+   border-radius: 5px;
+   position: absolute;
+   right: 20px;
+   text-align: center;
+   font-family: var(--scrannysFontLight);
+   font-size: 14px;
+   letter-spacing: 1.17px;
+   outline: none;
+   border: none;
+   cursor: pointer;
+`
 
 //Main Component
 function CartGuide() {
@@ -69,7 +109,11 @@ function CartGuide() {
         </ProductsContainer>
 
         <TotalCheckoutBar>
-
+            <TotalTitle>Total:</TotalTitle>
+            <ProductConsumer>
+                { value =>  <TotalPrice>{"€ " + value.cartTotal}</TotalPrice> }
+            </ProductConsumer>
+            <CheckoutButton>Checkout</CheckoutButton>
         </TotalCheckoutBar>
     </CartGuideContainer>
     </>
