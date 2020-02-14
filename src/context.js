@@ -13,6 +13,7 @@ class ProductProvider extends Component {
 
     state = {
         products: [],
+        cart: [],
     }
 
     //CREATING COPY OF DB DATA
@@ -70,7 +71,9 @@ class ProductProvider extends Component {
 
         //Set the new values
         this.setState( () => {
-            return { products: tempProducts }
+            return { products: tempProducts, cart: [...this.state.cart, product] }
+        }, () => { 
+            this.addTotal() 
         })
     }
 
@@ -96,6 +99,10 @@ class ProductProvider extends Component {
         this.setState( () => {
             return { products: tempProducts }
         })
+    }
+
+    addTotal = () => {
+        console.log("test")
     }
 
 

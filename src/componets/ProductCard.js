@@ -47,6 +47,9 @@ const Stock = styled.p`
     font-size: 10px;
     line-height: 15px;
     margin-top: 8px;
+    span{
+        font-family: var(--scrannysFontBold); 
+    }
 `
 const ProductFooterContainer = styled.div`
    height: calc(34px);

@@ -6,7 +6,7 @@ import {ProductConsumer} from '../../context';
 //Import Images
 import plusIcon from '../../assets/plusIcon.svg'
 import minusIcon from '../../assets/minusIcon.svg'
-// import crossIcon from '../../assets/crossIcon.svg'
+import crossIcon from '../../assets/crossIcon.svg'
 
 
 //Styles
@@ -113,9 +113,12 @@ function ProductBox(props) {
                 <ProductConsumer>
                     { value => {
                         if( cartQuantity > 0) {
-                            return  <SubtractButton onClick={ () => value.decrementQuantity(id) }>
-                                        {/* <img src={cartQuantity === 1 ? crossIcon : minusIcon} alt="minus icon"/> */}
-                                        <img src={minusIcon} alt="minus icon"/>
+                            return  <SubtractButton 
+                                        onClick={ () => value.decrementQuantity(id) }
+                                        style={cartQuantity === 1 ? {background: "var(--scrannysRed)" } : {background: "var(--scrannysBlue)"}} 
+                                    >
+                                        <img src={cartQuantity === 1 ? crossIcon : minusIcon} alt="minus icon"/>
+                                        {/* <img src={minusIcon} alt="minus icon"/> */}
                                     </SubtractButton>
                         }  
                     }}
