@@ -97,7 +97,7 @@ function ProductCard(props) {
       <ProductCardContainer>
 
         <ImageContainer>
-            <img src={image} alt=""/>
+            <img src={image} alt={title}/>
         </ImageContainer>
 
         <ProductDetailsContainer>
