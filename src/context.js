@@ -104,11 +104,13 @@ class ProductProvider extends Component {
 
     calculateCartTotal = () => {
 
-        let cartTotal = 0
-        this.state.products.map( item => cartTotal += parseFloat(item.totalPrice) )
+        // let cartTotal = 0
+        // this.state.products.map( item => cartTotal += parseFloat(item.totalPrice) )
+        let cartTotal = this.state.products.reduce( (acc, item) => acc + item.cartQuantity * item.price, 0.0)
 
         this.setState( () => {
-            return{ cartTotal: parseFloat(cartTotal).toFixed(2) }
+            // return{ cartTotal: parseFloat(cartTotal).toFixed(2) }
+            return{ cartTotal: cartTotal.toFixed(2) }
         })
     }
 
