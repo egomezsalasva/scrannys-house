@@ -13,8 +13,6 @@ import PageNotFound from './pages/PageNotFound'
 //Main Component
 function App() {
 
-  const dataContext = useContext(DataContext)
-
   return (
     <>
     <DataProvider>
@@ -22,10 +20,7 @@ function App() {
 
       <HeaderBar />
 
-      <CartGuide 
-        stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" 
-        dataContext={dataContext}
-      />
+      <CartGuide stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" />
          
       <Switch>
         <Route path="/all" component={All} />

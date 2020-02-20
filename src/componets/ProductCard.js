@@ -89,7 +89,7 @@ const AddItemTitle = styled.h3`
 
 
 //Interior Components
-function IncrementButton({id, stockQuantity, cartQuantity}){
+function IncrementButton({id, stockQuantity, cartQuantity,}){
 
     const dataContext = useContext(DataContext)
 
@@ -133,7 +133,7 @@ function ProductCard({productData}) {
 
         <ProductFooterContainer>
             <Price>€ {price}</Price>
-            <IncrementButton id={id} stockQuantity={stockQuantity} cartQuantity={cartQuantity} />
+            <IncrementButton id={id} stockQuantity={stockQuantity} cartQuantity={cartQuantity}/>
         </ProductFooterContainer>
         
       </ProductCardContainer>

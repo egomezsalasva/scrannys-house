@@ -5,11 +5,11 @@ import PRODUCTS_DB from './data/data'
 
 
 //Create Context API Object
-const DataContext = React.createContext()
+export const DataContext = React.createContext()
 
 
 //Provider
-function DataProvider({children}) {
+export function DataProvider({children}) {
 
     const [products, setProducts] = useState([])
     // const [cart, setCart] = useState([])
@@ -46,19 +46,18 @@ function DataProvider({children}) {
     }
 
     //CALCULATE TOTAL
-    const calculateCartTotal = () => {
+    const calculateCartTotal = ({cartTotal}) => {
         let cartTotal = products.reduce( (acc, item) => acc + item.cartQuantity * item.price, 0.0)
         setCartTotal(cartTotal.toFixed(2))
     }
-      
-    
-    
-    //EVENT HANDLERS
+
+
     const incrementQuantity = id => {
 
         var tempProducts = [...products]
         const index = tempProducts.indexOf(getProductThroughID(id))
         const product = tempProducts[index]
+
 
         //Check if stock is greater than 0
         if(product.stockQuantity > 0){
@@ -74,9 +73,8 @@ function DataProvider({children}) {
             product.inStock = false
         }
 
-        //Set the new values
+        // Set the new values
         setProducts(tempProducts)
-        // setCart(...cart, product)
         calculateCartTotal()        
     }
 
@@ -100,17 +98,16 @@ function DataProvider({children}) {
         
         //Set the new values
         setProducts(tempProducts)
-        // setCart(...cart, product)
         calculateCartTotal()
     }
+   
 
     return(
         <DataContext.Provider value={{
-            products: products,
-            // cart: cart,
-            cartTotal: cartTotal,
-            incrementQuantity: incrementQuantity,
-            decrementQuantity: decrementQuantity, 
+            products,
+            calculateCartTotal,
+            incrementQuantity,
+            decrementQuantity,
         }}>
             {children}
         </DataContext.Provider>
@@ -118,8 +115,21 @@ function DataProvider({children}) {
 }
 
 
-//Consumer
-const ProductConsumer = DataContext.Consumer
 
 
-export {DataProvider, ProductConsumer, DataContext}
+
+
+
+
+    
+
+    
+
+    
+
+
+
+
+
+
+
