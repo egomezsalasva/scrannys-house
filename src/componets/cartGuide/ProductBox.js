@@ -66,7 +66,7 @@ const CounterButton = styled.button`
     outline: none;
     border: none;
     opacity: ${ props => props.disabled ? 0.25 : 1 };
-    cursor: pointer;
+    cursor: ${ props => props.disabled ? "auto" : "pointer" };
     img{
         position: absolute;
         top: 50%;

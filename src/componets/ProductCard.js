@@ -75,6 +75,7 @@ const AddItemButton = styled.button`
     outline: none;
     border: none;
     opacity: ${props => props.disabled ? 0.5 : 1};
+    cursor: ${ props => props.disabled ? "auto" : "pointer" };
 `
 const AddItemTitle = styled.h3`
     font-family: var(--scrannysFontLight);
