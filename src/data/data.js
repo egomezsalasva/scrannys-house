@@ -2,6 +2,7 @@
 const PRODUCTS_DB = [
     {
         id: 1,
+        sku: "sku_GlobXcV9cgdhug",
         title: "Walkers Roast Chicken",
         weight: "25g",
         price: 0.80.toFixed(2),
@@ -15,6 +16,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 2,
+        sku: "sku_GlpNxPaRKM8mQ1",
         title: "Walkers Smoky Bacon",
         weight: "25g",
         price: 0.80.toFixed(2),
@@ -28,6 +30,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 3,
+        sku: "sku_GlpO1gUeY0czKn",
         title: "Walkers Prawn Cocktail",
         weight: "25g",
         price: 0.80.toFixed(2),
@@ -41,6 +44,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 4,
+        sku: "sku_GlpQEXRPKk6EbY",
         title: "Walkers Cheese & Onion",
         weight: "25g",
         price: 0.80.toFixed(2),
@@ -54,6 +58,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 5,
+        sku: "sku_GlpRw5XLMVbFTo",
         title: "Jammie Dodgers Jam & Yogurt",
         weight: "107g",
         price: 2.80.toFixed(2),
