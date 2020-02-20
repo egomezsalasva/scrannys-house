@@ -5,11 +5,11 @@ import PRODUCTS_DB from './data/data'
 
 
 //Create Context API Object
-const ProductContext = React.createContext()
+const DataContext = React.createContext()
 
 
 //Provider
-function ProductProvider({children}) {
+function DataProvider({children}) {
 
     const [products, setProducts] = useState([])
     // const [cart, setCart] = useState([])
@@ -105,7 +105,7 @@ function ProductProvider({children}) {
     }
 
     return(
-        <ProductContext.Provider value={{
+        <DataContext.Provider value={{
             products: products,
             // cart: cart,
             cartTotal: cartTotal,
@@ -113,13 +113,13 @@ function ProductProvider({children}) {
             decrementQuantity: decrementQuantity, 
         }}>
             {children}
-        </ProductContext.Provider>
+        </DataContext.Provider>
     )
 }
 
 
 //Consumer
-const ProductConsumer = ProductContext.Consumer
+const ProductConsumer = DataContext.Consumer
 
 
-export {ProductProvider, ProductConsumer}
+export {DataProvider, ProductConsumer, DataContext}

@@ -1,8 +1,8 @@
 //Import Libraries
-import React from 'react'
+import React, { useContext } from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 //Import Context API
-import { ProductProvider, ProductConsumer } from './context' 
+import { DataProvider, DataContext } from './context' 
 //Import Components
 import HeaderBar from './componets/HeaderBar'
 import CartGuide from './componets/cartGuide/CartGuide'
@@ -12,20 +12,21 @@ import PageNotFound from './pages/PageNotFound'
 
 //Main Component
 function App() {
+
+  const dataContext = useContext(DataContext)
+
   return (
     <>
-    <ProductProvider>
+    <DataProvider>
       <Router>
 
       <HeaderBar />
-      <ProductConsumer>
-        { value => {
-          return <CartGuide stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" valueProp={value}/>
-        }}
-        
-      </ProductConsumer>
-     
 
+      <CartGuide 
+        stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" 
+        dataContext={dataContext}
+      />
+         
       <Switch>
         <Route path="/all" component={All} />
         {/* <Route path="/crisps" component={Crisps} />
@@ -38,7 +39,7 @@ function App() {
       </Switch>
 
       </Router>
-    </ProductProvider>  
+    </DataProvider>  
     </>
   );
 }

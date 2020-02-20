@@ -1,8 +1,8 @@
 //Import Libraries
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 //Import Context API (Data)
-import { ProductConsumer } from '../context'
+import { DataContext } from '../context'
 //Import Components
 import ProductCard from '../componets/ProductCard'
 //Import Images
@@ -55,6 +55,8 @@ const ProductListContainer = styled.div`
 //Main Component
 function All() {
 
+  const dataContext = useContext(DataContext)
+
   return (
     <>
       <ProductsContainer>
@@ -64,16 +66,12 @@ function All() {
         <Title>All</Title>
 
         <ProductListContainer>
-          <ProductConsumer>
-            { value => {
-              return value.products.map( product => {
+            { dataContext.products.map( product => {
                 return <ProductCard
                           key={product.id}
                           productData={product}
                         />
-              })
-            }}
-          </ProductConsumer>
+              })}
         </ProductListContainer>
         
       </ProductsContainer>

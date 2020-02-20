@@ -1,8 +1,8 @@
 //Import Libraries
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components'
 //Import Data
-import {ProductConsumer} from '../../context';
+import { DataContext } from '../../context';
 //Import Images
 import plusIcon from '../../assets/plusIcon.svg'
 import minusIcon from '../../assets/minusIcon.svg'
@@ -84,12 +84,41 @@ const SubtractButton = styled(CounterButton)`
 `
 
 
+//Interior Components
+function IncrementButton({id, stockQuantity}) {
+
+    const dataContext = useContext(DataContext)
+
+    if( stockQuantity > 0) {
+        return  <AddButton onClick={ () => dataContext.incrementQuantity(id) }>
+                    <img src={plusIcon} alt="plus icon"/>
+                </AddButton>
+    } else {
+        return  <AddButton disabled>
+                    <img src={plusIcon} alt="plus icon"/>
+                </AddButton>
+    }
+}
+function DecrementButton({id, cartQuantity}){
+
+    const dataContext = useContext(DataContext)
+
+    if( cartQuantity > 0) {
+        return  <SubtractButton 
+                    onClick={ () => dataContext.decrementQuantity(id) }
+                    style={cartQuantity === 1 ? {background: "var(--scrannysRed)" } : {background: "var(--scrannysBlue)"}} 
+                >
+                    <img src={cartQuantity === 1 ? crossIcon : minusIcon} alt="minus icon"/>
+                </SubtractButton>
+    }  
+    return null
+}
+
+
 //Main Component
-function ProductBox(props) {
+function ProductBox({productData}) {
 
-  const { incrementQuantity, decrementQuantity } = props.value
-  const { id, title, weight, price, cartQuantity, stockQuantity,  } = props.productData
-
+    const { id, title, weight, price, cartQuantity, stockQuantity } = productData
 
 
   if(cartQuantity > 0){
@@ -99,34 +128,11 @@ function ProductBox(props) {
     
             <ProductTitle>{title}<br/>{weight}</ProductTitle>
             <ProductPrice>€ {(price * cartQuantity).toFixed(2)}</ProductPrice>
-            <ProductQuantity>{cartQuantity}</ProductQuantity>    
+            <ProductQuantity>{cartQuantity}</ProductQuantity>  
+
             <CounterButtons>
-                <ProductConsumer>
-                    { () => {
-                        if( stockQuantity > 0) {
-                            return  <AddButton onClick={ () => incrementQuantity(id) }>
-                                        <img src={plusIcon} alt="plus icon"/>
-                                    </AddButton>
-                        } else {
-                            return  <AddButton disabled>
-                                        <img src={plusIcon} alt="plus icon"/>
-                                    </AddButton>
-                        }  
-                    }}
-                </ProductConsumer>
-                <ProductConsumer>
-                    { () => {
-                        if( cartQuantity > 0) {
-                            return  <SubtractButton 
-                                        onClick={ () => decrementQuantity(id) }
-                                        style={cartQuantity === 1 ? {background: "var(--scrannysRed)" } : {background: "var(--scrannysBlue)"}} 
-                                    >
-                                        <img src={cartQuantity === 1 ? crossIcon : minusIcon} alt="minus icon"/>
-                                        {/* <img src={minusIcon} alt="minus icon"/> */}
-                                    </SubtractButton>
-                        }  
-                    }}
-                </ProductConsumer>
+                <IncrementButton id={id} stockQuantity={stockQuantity} />
+                <DecrementButton id={id} cartQuantity={cartQuantity} />
             </CounterButtons>
     
         </ProductBoxContainer>
