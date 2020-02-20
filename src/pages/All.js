@@ -61,7 +61,7 @@ function All() {
     <>
       <ProductsContainer>
 
-        <LogoProducts><img src={logoProducts} alt={logoProducts} /></LogoProducts>
+        <LogoProducts><img src={logoProducts} alt="logo" /></LogoProducts>
 
         <Title>All</Title>
 

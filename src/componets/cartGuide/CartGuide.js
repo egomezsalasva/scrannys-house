@@ -105,9 +105,7 @@ function CartGuide({stripeToken}) {
         <>
         <CartGuideContainer>
 
-            <TitleContainer>
-                <Title>Your Cart</Title>
-            </TitleContainer>
+            <TitleContainer><Title>Your Cart</Title></TitleContainer>
             
             <ProductsContainer>
                 { dataContext.products.map( product => {
