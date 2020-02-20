@@ -18,7 +18,7 @@ function App() {
       <Router>
 
       <HeaderBar />
-      <CartGuide />
+      <CartGuide stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" />
 
       <Switch>
         <Route path="/all" component={All} />

@@ -88,7 +88,6 @@ function CartGuide() {
   return (
     <>
     <CartGuideContainer>
-
         <TitleContainer>
             <Title>Your Cart</Title>
         </TitleContainer>
