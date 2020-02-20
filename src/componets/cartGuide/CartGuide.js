@@ -1,5 +1,5 @@
 //Import Libraries
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 //Import Context API (Data)
 import { ProductConsumer } from '../../context'
@@ -83,7 +83,23 @@ const CheckoutButton = styled.button`
 `
 
 //Main Component
-function CartGuide() {
+function CartGuide(props) {
+
+  const {stripeToken, valueProp} = props
+
+  const [stripe, setStripe] = useState(null)
+
+  useEffect(() => {
+    if(window.Stripe) setStripe(window.Stripe(stripeToken))
+  }, [stripeToken])
+
+  function checkout() {
+    stripe.redirectToCheckout({
+        items: valueProp.products.map( item => ({ sku: item.sku, quantity: item.cartQuantity, })),
+        successUrl: 'https://your-website.com/success',
+        cancelUrl: 'https://your-website.com/canceled',
+    })
+  }
 
   return (
     <>
@@ -111,7 +127,7 @@ function CartGuide() {
             <ProductConsumer>
                 { value =>  <TotalPrice>{"€ " + value.cartTotal}</TotalPrice> }
             </ProductConsumer>
-            <CheckoutButton>Checkout</CheckoutButton>
+            <CheckoutButton onClick={() => checkout()} >Checkout</CheckoutButton>
         </TotalCheckoutBar>
     </CartGuideContainer>
     </>

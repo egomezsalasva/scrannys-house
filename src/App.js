@@ -2,7 +2,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 //Import Context API
-import { ProductProvider } from './context' 
+import { ProductProvider, ProductConsumer } from './context' 
 //Import Components
 import HeaderBar from './componets/HeaderBar'
 import CartGuide from './componets/cartGuide/CartGuide'
@@ -18,7 +18,13 @@ function App() {
       <Router>
 
       <HeaderBar />
-      <CartGuide stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" />
+      <ProductConsumer>
+        { value => {
+          return <CartGuide stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" valueProp={value}/>
+        }}
+        
+      </ProductConsumer>
+     
 
       <Switch>
         <Route path="/all" component={All} />

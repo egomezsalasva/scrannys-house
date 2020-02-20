@@ -1,5 +1,5 @@
 //Import Libraries
-import React, {Component} from 'react'
+import React, { useState, useEffect } from 'react'
 //Import Data from DB
 import PRODUCTS_DB from './data/data'
 
@@ -9,23 +9,21 @@ const ProductContext = React.createContext()
 
 
 //Provider
-class ProductProvider extends Component {
+function ProductProvider({children}) {
 
-    state = {
-        products: [],
-        cart: [],
-        cartTotal: 0,
-    }
+    const [products, setProducts] = useState([])
+    // const [cart, setCart] = useState([])
+    const [cartTotal, setCartTotal] = useState(0)
 
     //CREATING COPY OF DB DATA
     //(we want original DB to only be edited once the payment has been accepted)
         //Once the componet is mounted insert temporary products for user to edit (copy of original DB)
-        componentDidMount(){
-            this.setTempProducts()
-        }
+        useEffect(() => {
+            setTempProducts()
+        }, [])
         //Create a copy of the Product DB in order to edit without overwriting initial DB. 
         //Send the products to the empty products array in state.
-        setTempProducts = () => {
+        const setTempProducts = () => {
             //Initialize with empty array
             let tempProducts = []
             PRODUCTS_DB.forEach( product => {
@@ -35,26 +33,31 @@ class ProductProvider extends Component {
                 tempProducts = [...tempProducts, singleProduct]
             })
             //Pastes copy to state
-            this.setState( () => {
-                return{products: tempProducts}
-            })
+            setProducts(tempProducts)
         }
     //
 
     //FIND CORRECT PRODUCT FROM PRODUCTS STATE ARRAY
-    getProductThroughID = idArg => {
+    const getProductThroughID = idArg => {
         //See if Product ID from state matches the argument
-        const productThroughID = this.state.products.find( product => product.id === idArg )
+        const productThroughID = products.find( product => product.id === idArg )
         //Return match
         return productThroughID
     }
+
+    //CALCULATE TOTAL
+    const calculateCartTotal = () => {
+        let cartTotal = products.reduce( (acc, item) => acc + item.cartQuantity * item.price, 0.0)
+        setCartTotal(cartTotal.toFixed(2))
+    }
       
     
+    
     //EVENT HANDLERS
-    incrementQuantity = id => {
+    const incrementQuantity = id => {
 
-        var tempProducts = [...this.state.products]
-        const index = tempProducts.indexOf(this.getProductThroughID(id))
+        var tempProducts = [...products]
+        const index = tempProducts.indexOf(getProductThroughID(id))
         const product = tempProducts[index]
 
         //Check if stock is greater than 0
@@ -71,17 +74,16 @@ class ProductProvider extends Component {
             product.inStock = false
         }
 
-
         //Set the new values
-        this.setState( () => {
-            return { products: tempProducts, cart: [...this.state.cart, product]   }
-        }, () => { this.calculateCartTotal( )})
+        setProducts(tempProducts)
+        // setCart(...cart, product)
+        calculateCartTotal()        
     }
 
-    decrementQuantity = id => {
+    const decrementQuantity = id => {
 
-        var tempProducts = [...this.state.products]
-        const index = tempProducts.indexOf(this.getProductThroughID(id))
+        var tempProducts = [...products]
+        const index = tempProducts.indexOf(getProductThroughID(id))
         const product = tempProducts[index]
 
         //Decrement Quantity
@@ -97,37 +99,22 @@ class ProductProvider extends Component {
         }
         
         //Set the new values
-        this.setState( () => {
-            return { products: tempProducts }
-        }, () => { this.calculateCartTotal( )})
+        setProducts(tempProducts)
+        // setCart(...cart, product)
+        calculateCartTotal()
     }
 
-    calculateCartTotal = () => {
-
-        // let cartTotal = 0
-        // this.state.products.map( item => cartTotal += parseFloat(item.totalPrice) )
-        let cartTotal = this.state.products.reduce( (acc, item) => acc + item.cartQuantity * item.price, 0.0)
-
-        this.setState( () => {
-            // return{ cartTotal: parseFloat(cartTotal).toFixed(2) }
-            return{ cartTotal: cartTotal.toFixed(2) }
-        })
-    }
-
-
-    render() {
-        return(
-            <ProductContext.Provider value={{
-                // ...this.state,
-                products: this.state.products,
-                cartTotal: this.state.cartTotal,
-                incrementQuantity: this.incrementQuantity,
-                decrementQuantity: this.decrementQuantity, 
-            }}>
-                {this.props.children}
-            </ProductContext.Provider>
-        )
-    }
+    return(
+        <ProductContext.Provider value={{
+            products: products,
+            // cart: cart,
+            cartTotal: cartTotal,
+            incrementQuantity: incrementQuantity,
+            decrementQuantity: decrementQuantity, 
+        }}>
+            {children}
+        </ProductContext.Provider>
+    )
 }
 
 
