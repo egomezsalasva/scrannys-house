@@ -46,7 +46,7 @@ export function DataProvider({children}) {
     }
 
     //CALCULATE TOTAL
-    const calculateCartTotal = ({cartTotal}) => {
+    const calculateCartTotal = () => {
         let cartTotal = products.reduce( (acc, item) => acc + item.cartQuantity * item.price, 0.0)
         setCartTotal(cartTotal.toFixed(2))
     }
@@ -105,7 +105,7 @@ export function DataProvider({children}) {
     return(
         <DataContext.Provider value={{
             products,
-            calculateCartTotal,
+            cartTotal,
             incrementQuantity,
             decrementQuantity,
         }}>
