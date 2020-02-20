@@ -85,7 +85,6 @@ const AddItemTitle = styled.h3`
     text-align: center;
     width: 80px;
     line-height: 34px;
-    cursor: pointer;
 `
 
 //Main Component

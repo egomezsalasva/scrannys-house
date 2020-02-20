@@ -99,9 +99,8 @@ function CartGuide() {
                     return value.products.map( product => {
                         return <ProductBox
                                     key={product.id}
+                                    value={value}
                                     productData={product}
-                                    incrementQuantity="" 
-                                    decrementQuantity=""
                                 />    
                     })
                 }}

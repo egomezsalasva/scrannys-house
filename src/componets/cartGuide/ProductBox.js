@@ -87,7 +87,10 @@ const SubtractButton = styled(CounterButton)`
 //Main Component
 function ProductBox(props) {
 
+  const { incrementQuantity, decrementQuantity } = props.value
   const { id, title, weight, price, cartQuantity, stockQuantity,  } = props.productData
+
+
 
   if(cartQuantity > 0){
     return (
@@ -99,9 +102,9 @@ function ProductBox(props) {
             <ProductQuantity>{cartQuantity}</ProductQuantity>    
             <CounterButtons>
                 <ProductConsumer>
-                    { value => {
+                    { () => {
                         if( stockQuantity > 0) {
-                            return  <AddButton onClick={ () => value.incrementQuantity(id) }>
+                            return  <AddButton onClick={ () => incrementQuantity(id) }>
                                         <img src={plusIcon} alt="plus icon"/>
                                     </AddButton>
                         } else {
@@ -112,10 +115,10 @@ function ProductBox(props) {
                     }}
                 </ProductConsumer>
                 <ProductConsumer>
-                    { value => {
+                    { () => {
                         if( cartQuantity > 0) {
                             return  <SubtractButton 
-                                        onClick={ () => value.decrementQuantity(id) }
+                                        onClick={ () => decrementQuantity(id) }
                                         style={cartQuantity === 1 ? {background: "var(--scrannysRed)" } : {background: "var(--scrannysBlue)"}} 
                                     >
                                         <img src={cartQuantity === 1 ? crossIcon : minusIcon} alt="minus icon"/>
