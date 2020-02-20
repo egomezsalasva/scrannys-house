@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components'
 //Import Context API (Data)
-import { ProductConsumer, DataContext } from '../../context'
+import { DataContext } from '../../context'
 //Import Components
 import ProductBox from './ProductBox'
 
@@ -93,7 +93,7 @@ function CartGuide({stripeToken}) {
         if(window.Stripe) setStripe(window.Stripe(stripeToken))
     }, [stripeToken])
 
-    function checkout() {
+    function stripeCheckout() {
         stripe.redirectToCheckout({
             items: dataContext.products.map( item => ({ sku: item.sku, quantity: item.cartQuantity, })),
             successUrl: 'https://your-website.com/success',
@@ -104,6 +104,7 @@ function CartGuide({stripeToken}) {
     return (
         <>
         <CartGuideContainer>
+
             <TitleContainer>
                 <Title>Your Cart</Title>
             </TitleContainer>
@@ -112,7 +113,6 @@ function CartGuide({stripeToken}) {
                 { dataContext.products.map( product => {
                     return <ProductBox
                                 key={product.id}
-                                // dataContext={dataContext}
                                 productData={product}
                             />    
                 })}
@@ -120,11 +120,11 @@ function CartGuide({stripeToken}) {
 
             <TotalCheckoutBar>
                 <TotalTitle>Total:</TotalTitle>
-                <ProductConsumer>
-                    { value =>  <TotalPrice>{"€ " + value.cartTotal}</TotalPrice> }
-                </ProductConsumer>
-                <CheckoutButton onClick={() => checkout()} >Checkout</CheckoutButton>
+                <TotalPrice>{"€ " + dataContext.cartTotal}</TotalPrice>
+
+                <CheckoutButton onClick={() => stripeCheckout()} >Checkout</CheckoutButton>
             </TotalCheckoutBar>
+
         </CartGuideContainer>
         </>
     )

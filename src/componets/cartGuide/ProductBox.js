@@ -120,26 +120,25 @@ function ProductBox({productData}) {
 
     const { id, title, weight, price, cartQuantity, stockQuantity } = productData
 
+    if(cartQuantity > 0){
+        return (
+            <>
+            <ProductBoxContainer>
+        
+                <ProductTitle>{title}<br/>{weight}</ProductTitle>
+                <ProductPrice>€ {(price * cartQuantity).toFixed(2)}</ProductPrice>
+                <ProductQuantity>{cartQuantity}</ProductQuantity>  
 
-  if(cartQuantity > 0){
-    return (
-        <>
-        <ProductBoxContainer>
-    
-            <ProductTitle>{title}<br/>{weight}</ProductTitle>
-            <ProductPrice>€ {(price * cartQuantity).toFixed(2)}</ProductPrice>
-            <ProductQuantity>{cartQuantity}</ProductQuantity>  
-
-            <CounterButtons>
-                <IncrementButton id={id} stockQuantity={stockQuantity} />
-                <DecrementButton id={id} cartQuantity={cartQuantity} />
-            </CounterButtons>
-    
-        </ProductBoxContainer>
-        </>
-      )
-  }
-  return null
+                <CounterButtons>
+                    <IncrementButton id={id} stockQuantity={stockQuantity} />
+                    <DecrementButton id={id} cartQuantity={cartQuantity} />
+                </CounterButtons>
+        
+            </ProductBoxContainer>
+            </>
+        )
+    }
+    return null
 
 }
 
