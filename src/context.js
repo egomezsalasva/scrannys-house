@@ -1,60 +1,60 @@
 //Import Libraries
-import React, {Component} from 'react'
+import React, { useState, useEffect } from 'react'
 //Import Data from DB
 import PRODUCTS_DB from './data/data'
 
 
 //Create Context API Object
-const ProductContext = React.createContext()
+export const DataContext = React.createContext()
 
 
 //Provider
-class ProductProvider extends Component {
+export function DataProvider({children}) {
 
-    state = {
-        products: [],
-        cart: [],
-        cartTotal: 0,
-    }
+    const [products, setProducts] = useState([])
+    const [cart, setCart] = useState([])
+    const [cartTotal, setCartTotal] = useState(0)
 
     //CREATING COPY OF DB DATA
     //(we want original DB to only be edited once the payment has been accepted)
         //Once the componet is mounted insert temporary products for user to edit (copy of original DB)
-        componentDidMount(){
-            this.setTempProducts()
-        }
+        useEffect(() => {
+            setTempProducts()
+        }, [])
         //Create a copy of the Product DB in order to edit without overwriting initial DB. 
         //Send the products to the empty products array in state.
-        setTempProducts = () => {
+        const setTempProducts = () => {
             //Initialize with empty array
             let tempProducts = []
-            PRODUCTS_DB.forEach( product => {
+            PRODUCTS_DB.forEach( item => {
                 //Creates copy of products in DB
-                const singleProduct = {...product}
+                const singleItem = {...item}
                 //Adds each copy to the empty array
-                tempProducts = [...tempProducts, singleProduct]
+                tempProducts = [...tempProducts, singleItem]
             })
             //Pastes copy to state
-            this.setState( () => {
-                return{products: tempProducts}
-            })
+            setProducts(tempProducts)
         }
     //
 
     //FIND CORRECT PRODUCT FROM PRODUCTS STATE ARRAY
-    getProductThroughID = idArg => {
+    const getProductThroughID = idArg => {
         //See if Product ID from state matches the argument
-        const productThroughID = this.state.products.find( product => product.id === idArg )
+        const productThroughID = products.find( product => product.id === idArg )
         //Return match
         return productThroughID
     }
-      
-    
-    //EVENT HANDLERS
-    incrementQuantity = id => {
 
-        var tempProducts = [...this.state.products]
-        const index = tempProducts.indexOf(this.getProductThroughID(id))
+    //CALCULATE TOTAL
+    const calculateCartTotal = () => {
+        let cartTotal = products.reduce( (acc, item) => acc + item.cartQuantity * item.price, 0.0)
+        setCartTotal(cartTotal.toFixed(2))
+    }
+
+    const incrementQuantity = id => {
+
+        let tempProducts = [...products]
+        const index = tempProducts.indexOf(getProductThroughID(id))
         const product = tempProducts[index]
 
         //Check if stock is greater than 0
@@ -66,22 +66,20 @@ class ProductProvider extends Component {
             product.stockQuantity -= 1
             //Calculate new Total Price of Item
             product.totalPrice = (product.price * product.cartQuantity).toFixed(2)
-
         } else {
             product.inStock = false
         }
 
+        setProducts(tempProducts)
+        setCart([...cart, product])
+        calculateCartTotal()  
 
-        //Set the new values
-        this.setState( () => {
-            return { products: tempProducts, cart: [...this.state.cart, product]   }
-        }, () => { this.calculateCartTotal( )})
     }
 
-    decrementQuantity = id => {
+    const decrementQuantity = id => {
 
-        var tempProducts = [...this.state.products]
-        const index = tempProducts.indexOf(this.getProductThroughID(id))
+        let tempProducts = [...products]
+        const index = tempProducts.indexOf(getProductThroughID(id))
         const product = tempProducts[index]
 
         //Decrement Quantity
@@ -95,14 +93,18 @@ class ProductProvider extends Component {
         if(product.cartQuantity === 0){
             product.inCart = false
         }
+
+        removeFromCart()
         
         //Set the new values
-        this.setState( () => {
-            return { products: tempProducts }
-        }, () => { this.calculateCartTotal( )})
+        setProducts(tempProducts)
+        setCart([...cart, product])
+        calculateCartTotal()
+
+        console.log(cart)
     }
 
-    calculateCartTotal = () => {
+    const removeFromCart = () => {
 
         // let cartTotal = 0
         // this.state.products.map( item => cartTotal += parseFloat(item.totalPrice) )
@@ -113,26 +115,37 @@ class ProductProvider extends Component {
             return{ cartTotal: cartTotal.toFixed(2) }
         })
     }
+   
 
-
-    render() {
-        return(
-            <ProductContext.Provider value={{
-                // ...this.state,
-                products: this.state.products,
-                cartTotal: this.state.cartTotal,
-                incrementQuantity: this.incrementQuantity,
-                decrementQuantity: this.decrementQuantity, 
-            }}>
-                {this.props.children}
-            </ProductContext.Provider>
-        )
-    }
+    return(
+        <DataContext.Provider value={{
+            products,
+            cart,
+            cartTotal,
+            incrementQuantity,
+            decrementQuantity,
+        }}>
+            {children}
+        </DataContext.Provider>
+    )
 }
 
 
-//Consumer
-const ProductConsumer = ProductContext.Consumer
 
 
-export {ProductProvider, ProductConsumer}
+
+
+
+
+    
+
+    
+
+    
+
+
+
+
+
+
+

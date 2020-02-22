@@ -1,8 +1,8 @@
 //Import Libraries
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components'
 //Import Context API (Data)
-import { ProductConsumer } from '../../context'
+import { DataContext } from '../../context'
 //Import Components
 import ProductBox from './ProductBox'
 
@@ -83,40 +83,49 @@ const CheckoutButton = styled.button`
 `
 
 //Main Component
-function CartGuide() {
+function CartGuide({stripeToken}) {
 
-  return (
-    <>
-    <CartGuideContainer>
+    const dataContext = useContext(DataContext)
 
-        <TitleContainer>
-            <Title>Your Cart</Title>
-        </TitleContainer>
-        
-        <ProductsContainer>
-            <ProductConsumer>
-                { value => {
-                    return value.products.map( product => {
-                        return <ProductBox
-                                    key={product.id}
-                                    value={value}
-                                    productData={product}
-                                />    
-                    })
-                }}
-            </ProductConsumer>
-        </ProductsContainer>
+    const [stripe, setStripe] = useState(null)
 
-        <TotalCheckoutBar>
-            <TotalTitle>Total:</TotalTitle>
-            <ProductConsumer>
-                { value =>  <TotalPrice>{"€ " + value.cartTotal}</TotalPrice> }
-            </ProductConsumer>
-            <CheckoutButton>Checkout</CheckoutButton>
-        </TotalCheckoutBar>
-    </CartGuideContainer>
-    </>
-  )
+    useEffect(() => {
+        if(window.Stripe) setStripe(window.Stripe(stripeToken))
+    }, [stripeToken])
+
+    function stripeCheckout() {
+        stripe.redirectToCheckout({
+            items: dataContext.cart.map( item => ({ sku: item.sku, quantity: item.cartQuantity, })),
+            successUrl: 'https://your-website.com/success',
+            cancelUrl: 'https://your-website.com/canceled',
+        })
+    }
+
+    return (
+        <>
+        <CartGuideContainer>
+
+            <TitleContainer><Title>Your Cart</Title></TitleContainer>
+            
+            <ProductsContainer>
+                { dataContext.products.map( product => {
+                    return <ProductBox
+                                key={product.id}
+                                productData={product}
+                            />    
+                })}
+            </ProductsContainer>
+
+            <TotalCheckoutBar>
+                <TotalTitle>Total:</TotalTitle>
+                <TotalPrice>{"€ " + dataContext.cartTotal}</TotalPrice>
+
+                <CheckoutButton onClick={() => stripeCheckout()} >Checkout</CheckoutButton>
+            </TotalCheckoutBar>
+
+        </CartGuideContainer>
+        </>
+    )
 }
 
 export default CartGuide;

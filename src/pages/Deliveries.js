@@ -53,30 +53,14 @@ const ProductListContainer = styled.div`
 
 
 //Main Component
-function All() {
+function Deliveries() {
 
-  const dataContext = useContext(DataContext)
 
   return (
     <>
-      <ProductsContainer>
-
-        <LogoProducts><img src={logoProducts} alt="logo" /></LogoProducts>
-
-        <Title>All</Title>
-
-        <ProductListContainer>
-            { dataContext.products.map( product => {
-                return <ProductCard
-                          key={product.id}
-                          productData={product}
-                        />
-              })}
-        </ProductListContainer>
-        
-      </ProductsContainer>
+     
     </>
   );
 }
 
-export default All;
+export default Deliveries;

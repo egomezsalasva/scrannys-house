@@ -1,9 +1,9 @@
 //Import Libraries
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import LinesEllipsis from 'react-lines-ellipsis'
 //Import Context API (Data)
-import { ProductConsumer } from '../context'
+import { DataContext } from '../context'
 
 
 //Styles
@@ -87,10 +87,28 @@ const AddItemTitle = styled.h3`
     line-height: 34px;
 `
 
-//Main Component
-function ProductCard(props) {
 
-  const { id, image, title, weight, stockQuantity, price, cartQuantity } = props.productData
+//Interior Components
+function IncrementButton({id, stockQuantity, cartQuantity,}){
+
+    const dataContext = useContext(DataContext)
+
+    if(stockQuantity > 0) {
+        return  <AddItemButton onClick={ () => dataContext.incrementQuantity(id) }>
+                    <AddItemTitle>{cartQuantity} +</AddItemTitle>
+                </AddItemButton>
+    } else {
+        return  <AddItemButton disabled>
+                    <AddItemTitle>{cartQuantity} +</AddItemTitle>
+                </AddItemButton>
+    }
+}
+
+
+//Main Component
+function ProductCard({productData}) {
+
+  const { id, image, title, weight, stockQuantity, price, cartQuantity } = productData
 
   return (
     <>
@@ -106,25 +124,16 @@ function ProductCard(props) {
                 <LinesEllipsis text={title} maxLine='2' ellipsis=' ...' basedOn='words'/>
             </Title>
             <Weight>{weight}</Weight>
-            <Stock><span style={ stockQuantity > 0 ? {color: "var(--scrannysGreen)"} : {color: "var(--scrannysRed)"}}>{stockQuantity}</span> in stock</Stock>
+            <Stock>
+                <span style={ stockQuantity > 0 ? {color: "var(--scrannysGreen)"} : {color: "var(--scrannysRed)"}} >
+                    {stockQuantity}
+                </span> in stock    
+            </Stock>
         </ProductDetailsContainer>
 
         <ProductFooterContainer>
             <Price>€ {price}</Price>
-            <ProductConsumer>
-                { value => {
-                    if(stockQuantity > 0) {
-                        return  <AddItemButton onClick={ () => value.incrementQuantity(id) }>
-                                    <AddItemTitle>{cartQuantity} +</AddItemTitle>
-                                </AddItemButton>
-                    } else {
-                        return  <AddItemButton disabled>
-                                    <AddItemTitle>{cartQuantity} +</AddItemTitle>
-                                </AddItemButton>
-                    }
-                    
-                }}
-            </ProductConsumer>
+            <IncrementButton id={id} stockQuantity={stockQuantity} cartQuantity={cartQuantity}/>
         </ProductFooterContainer>
         
       </ProductCardContainer>
