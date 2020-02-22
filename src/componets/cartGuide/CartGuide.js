@@ -95,7 +95,7 @@ function CartGuide({stripeToken}) {
 
     function stripeCheckout() {
         stripe.redirectToCheckout({
-            items: dataContext.products.map( item => ({ sku: item.sku, quantity: item.cartQuantity, })),
+            items: dataContext.cart.map( item => ({ sku: item.sku, quantity: item.cartQuantity, })),
             successUrl: 'https://your-website.com/success',
             cancelUrl: 'https://your-website.com/canceled',
         })

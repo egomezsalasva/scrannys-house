@@ -1,12 +1,13 @@
 //Import Libraries
-import React, { useContext } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 //Import Context API
-import { DataProvider, DataContext } from './context' 
+import { DataProvider } from './context' 
 //Import Components
 import HeaderBar from './componets/HeaderBar'
 import CartGuide from './componets/cartGuide/CartGuide'
 import All from './pages/All'
+import Deliveries from './pages/Deliveries'
 import PageNotFound from './pages/PageNotFound'
 
 
@@ -28,8 +29,8 @@ function App() {
         <Route path="/biscuits" component={Biscuits} />
         <Route path="/sweets" component={Sweets} />
         <Route path="/chocolates" component={Chocolates} />
-        <Route path="/others" component={Others} />
-        <Route exact path="/" component={Deliveries} /> */}
+        <Route path="/others" component={Others} /> */}
+        <Route exact path="/" component={Deliveries} />
         <Route component={PageNotFound} />
       </Switch>
 

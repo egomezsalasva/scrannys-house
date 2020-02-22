@@ -12,7 +12,7 @@ export const DataContext = React.createContext()
 export function DataProvider({children}) {
 
     const [products, setProducts] = useState([])
-    // const [cart, setCart] = useState([])
+    const [cart, setCart] = useState([])
     const [cartTotal, setCartTotal] = useState(0)
 
     //CREATING COPY OF DB DATA
@@ -26,11 +26,11 @@ export function DataProvider({children}) {
         const setTempProducts = () => {
             //Initialize with empty array
             let tempProducts = []
-            PRODUCTS_DB.forEach( product => {
+            PRODUCTS_DB.forEach( item => {
                 //Creates copy of products in DB
-                const singleProduct = {...product}
+                const singleItem = {...item}
                 //Adds each copy to the empty array
-                tempProducts = [...tempProducts, singleProduct]
+                tempProducts = [...tempProducts, singleItem]
             })
             //Pastes copy to state
             setProducts(tempProducts)
@@ -51,13 +51,11 @@ export function DataProvider({children}) {
         setCartTotal(cartTotal.toFixed(2))
     }
 
-
     const incrementQuantity = id => {
 
-        var tempProducts = [...products]
+        let tempProducts = [...products]
         const index = tempProducts.indexOf(getProductThroughID(id))
         const product = tempProducts[index]
-
 
         //Check if stock is greater than 0
         if(product.stockQuantity > 0){
@@ -68,19 +66,19 @@ export function DataProvider({children}) {
             product.stockQuantity -= 1
             //Calculate new Total Price of Item
             product.totalPrice = (product.price * product.cartQuantity).toFixed(2)
-
         } else {
             product.inStock = false
         }
 
-        // Set the new values
         setProducts(tempProducts)
-        calculateCartTotal()        
+        setCart([...cart, product])
+        calculateCartTotal()  
+
     }
 
     const decrementQuantity = id => {
 
-        var tempProducts = [...products]
+        let tempProducts = [...products]
         const index = tempProducts.indexOf(getProductThroughID(id))
         const product = tempProducts[index]
 
@@ -95,16 +93,28 @@ export function DataProvider({children}) {
         if(product.cartQuantity === 0){
             product.inCart = false
         }
+
+        removeFromCart()
         
         //Set the new values
         setProducts(tempProducts)
+        setCart([...cart, product])
         calculateCartTotal()
+
+        console.log(cart)
+    }
+
+    const removeFromCart = () => {
+
+        setCart(cart.filter(item => item.cartQuantity === 0))
+
     }
    
 
     return(
         <DataContext.Provider value={{
             products,
+            cart,
             cartTotal,
             incrementQuantity,
             decrementQuantity,
