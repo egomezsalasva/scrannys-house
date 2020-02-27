@@ -94,7 +94,7 @@ export function DataProvider({children}) {
             product.inCart = false
         }
 
-        removeFromCart()
+        // removeFromCart()
         
         //Set the new values
         setProducts(tempProducts)
