@@ -95,7 +95,7 @@ function CartGuide({stripeToken}) {
 
     function stripeCheckout() {
         stripe.redirectToCheckout({
-            items: dataContext.cart.map( item => ({ sku: item.sku, quantity: item.cartQuantity, })),
+            items: dataContext.cartProducts.map( item => ({ sku: item.sku, quantity: item.cartQuantity, })),
             successUrl: 'https://your-website.com/success',
             cancelUrl: 'https://your-website.com/canceled',
         })
@@ -108,7 +108,7 @@ function CartGuide({stripeToken}) {
             <TitleContainer><Title>Your Cart</Title></TitleContainer>
             
             <ProductsContainer>
-                { dataContext.products.map( product => {
+                { dataContext.cartProducts.map( product => {
                     return <ProductBox
                                 key={product.id}
                                 productData={product}
@@ -120,7 +120,7 @@ function CartGuide({stripeToken}) {
                 <TotalTitle>Total:</TotalTitle>
                 <TotalPrice>{"€ " + dataContext.cartTotal}</TotalPrice>
 
-                <CheckoutButton onClick={() => stripeCheckout()} >Checkout</CheckoutButton>
+                <CheckoutButton onClick={() => stripeCheckout()}>Checkout</CheckoutButton>
             </TotalCheckoutBar>
 
         </CartGuideContainer>
