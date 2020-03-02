@@ -72,6 +72,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 6,
+        sku: "sku_Gpw1MuwUcDvrb2",
         title: "Nik Naks Scampi'n'Lemon",
         weight: "20g",
         price: 0.80.toFixed(2),
@@ -85,6 +86,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 7,
+        sku: "sku_Gpw3PaDpoalI6F",
         title: "Nik Naks Rib'n'Saucy",
         weight: "20g",
         price: 0.80.toFixed(2),
@@ -98,6 +100,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 8,
+        sku: "sku_Gpw5ildDU5u2J6",
         title: "Nik Naks Nice'n'Spicy",
         weight: "20g",
         price: 0.80.toFixed(2),
@@ -111,6 +114,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 9,
+        sku: "sku_Gpw6D6kqLvlQYA",
         title: "Skittles Dips Yoghurty Coated",
         weight: "35g",
         price: 1.90.toFixed(2),
@@ -124,6 +128,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 10,
+        sku: "sku_Gpw7qEuvZIKSSM",
         title: "Skittles Chewies",
         weight: "196g",
         price: 2.80.toFixed(2),
@@ -137,6 +142,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 11,
+        sku: "sku_Gpw8AtIsKl6xNP",
         title: "Barratt Dip Dabs Softies",
         weight: "160g",
         price: 2.80.toFixed(2),
@@ -150,6 +156,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 12,
+        sku: "sku_GpwMNN0jV8h76R",
         title: "Swizzels Drumstick Squashies Bubblegum",
         weight: "175g",
         price: 2.80.toFixed(2),
@@ -163,6 +170,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 13,
+        sku: "sku_GpwOBLxKKT4Slk",
         title: "Swizzels Bumper Bag",
         weight: "180g",
         price: 2.80.toFixed(2),
@@ -176,6 +184,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 14,
+        sku: "sku_GpwOBLxKKT4Slk",
         title: "Swizzels Drumstick Squashies Original",
         weight: "175g",
         price: 2.80.toFixed(2),
@@ -189,6 +198,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 15,
+        sku: "sku_GpwPc1QM2cz7RE",
         title: "Jammie Dodgers Minis",
         weight: "20g",
         price: 0.80.toFixed(2),
@@ -202,6 +212,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 16,
+        sku: "sku_GpwQcVgraeYtQc",
         title: "Fox's Golden Crunch Creams",
         weight: "230g",
         price: 2.80.toFixed(2),
@@ -215,6 +226,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 17,
+        sku: "sku_GpwRy91YDfPP3t",
         title: "Barratt Refresher Softies",
         weight: "160g",
         price: 2.80.toFixed(2),
@@ -228,6 +240,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 18,
+        sku: "sku_GpwTkTKvIGMrMG",
         title: "Rowntrees Randoms",
         weight: "150g",
         price: 2.80.toFixed(2),
@@ -241,6 +254,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 19,
+        sku: "sku_GpwU62Sd12p6wy",
         title: "Jammie Dodgers",
         weight: "140g",
         price: 2,
@@ -254,6 +268,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 20,
+        sku: "sku_GpwVKIosIUDnaA",
         title: "Cadbury Freddo Caramel",
         weight: "19.5g",
         price: 0.80.toFixed(2),
@@ -267,6 +282,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 21,
+        sku: "sku_GpwWYZGygybkLl",
         title: "Bassett Jelly Babies",
         weight: "190g",
         price: 3.90.toFixed(2),
@@ -280,6 +296,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 22,
+        sku: "sku_GpwXOE31ibNJer",
         title: "Barratt Refreshers Roll",
         weight: "34g",
         price: 0.70.toFixed(2),
@@ -293,6 +310,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 23,
+        sku: "sku_GpwYGufjypkHkB",
         title: "Monster Munch Roast Beef",
         weight: "25g",
         price: 0.70.toFixed(2),
@@ -306,6 +324,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 24,
+        sku: "sku_GpwZcPH7uSDTY6",
         title: "Monster Munch Flamin' Hot",
         weight: "25g",
         price: 0.70.toFixed(2),
@@ -319,6 +338,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 25,
+        sku: "sku_GpwaTaYe773EHn",
         title: "Monster Munch Pickled Onion",
         weight: "25g",
         price: 0.70.toFixed(2),
@@ -332,6 +352,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 26,
+        sku: "sku_GpwbLhrtI91h7b",
         title: "Jaffa Cakes Cake Bar",
         weight: "30g",
         price: 0.70.toFixed(2),
@@ -345,6 +366,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 27,
+        sku: "sku_GpwcrnmVPi7P5h",
         title: "Toffee Crisp",
         weight: "18.7g",
         price: 0.80.toFixed(2),
@@ -358,6 +380,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 28,
+        sku: "sku_GpweU6u7flCHyH",
         title: "Swizzels Refreshers Chew Bar",
         weight: "18g",
         price: 0.70.toFixed(2),
@@ -371,6 +394,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 29,
+        sku: "sku_GpwfGLOK9DjCNd",
         title: "Tunnocks Milk Chocolate Caramel Wafer",
         weight: "30g",
         price: 0.90.toFixed(2),
@@ -384,6 +408,7 @@ const PRODUCTS_DB = [
     },
     {
         id: 30,
+        sku: "sku_GpwgkQHUFxegHi",
         title: "Rice Krispies Caramel & Chocolate",
         weight: "28g",
         price: 1,
@@ -397,11 +422,12 @@ const PRODUCTS_DB = [
     },
     {
         id: 31,
+        sku: "sku_GpwhY32ffbKJCr",
         title: "Rice Krispies Marshmallow",
         weight: "28g",
         price: 1,
         image: "img/products/SquaresMarshmallow.png",
-        category: "sweets",
+        category: "others",
         inStock: true,
         stockQuantity: 16,
         inCart: false,
