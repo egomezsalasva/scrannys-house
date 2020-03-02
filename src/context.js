@@ -79,33 +79,29 @@ export function DataProvider({children}) {
     }
 
     
-
-
     const decrementQuantity = id => {
 
-        let tempProducts = [...products]
+        const tempProducts = [...products]
         const index = tempProducts.indexOf(getProductThroughID(id))
-        const product = tempProducts[index]
+        const targetedProduct = tempProducts[index]
 
-        //Decrement Quantity
-        product.cartQuantity -= 1
-        //Increment Stock
-        product.stockQuantity += 1
-        product.inStock = true
-        //Calculate new Total Price
-        product.totalPrice = (product.price * product.cartQuantity).toFixed(2)
-
-        if(product.cartQuantity === 0){
-            product.inCart = false
+        if(targetedProduct.cartQuantity === 1){
+            targetedProduct.inCart = false
+            targetedProduct.cartQuantity = 0
+            cartProducts.splice( cartProducts.indexOf(getProductThroughID(id)), 1 )
+            //DELETE element to cartProducts array
+            setCartProducts([...cartProducts])
+        } else if ( targetedProduct.cartQuantity > 1) {
+            targetedProduct.cartQuantity -= 1
+            targetedProduct.stockQuantity += 1
+            //EDIT element in cartProducts array
+            setCartProducts([...cartProducts])
         }
-
-        // removeFromCart()
-        
-        //Set the new values
-        setProducts(tempProducts)
-        setCartProducts([...cartProducts, product])
         calculateCartTotal()
+        // //Calculate new Total Price
+        // product.totalPrice = (product.price * product.cartQuantity).toFixed(2)   
     }
+
 
     //Format cartProducts.cartquantity if float ends in 00 (eg. €1.00) remove the .00
    
