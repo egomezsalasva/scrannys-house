@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import LinesEllipsis from 'react-lines-ellipsis'
 //Import Context API (Data)
-import { DataContext } from '../context'
+import { DataContext } from '../../context'
 
 
 //Styles

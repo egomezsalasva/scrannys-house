@@ -1,10 +1,6 @@
 //Import Libraries
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-//Import Context API (Data)
-import { DataContext } from '../context'
-//Import Components
-import ProductCard from '../componets/products/ProductCard'
 //Import Images
 import logoProducts from '../assets/logoProducts.svg'
 
@@ -38,24 +34,10 @@ const Title = styled.h2`
     font-size: 28px;
     letter-spacing: 4.3px;
 `
-const ProductListContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    margin-top: -10px;
-    margin-bottom: 80px;
-    
-`
-
-//Data
 
 
 //Main Component
-function All() {
-
-  const dataContext = useContext(DataContext)
+function Deliveries() {
 
   return (
     <>
@@ -63,20 +45,12 @@ function All() {
 
       <LogoProducts><img src={logoProducts} alt="logo" /></LogoProducts>
 
-      <Title>All</Title>
+      <Title>Deliveries</Title>
 
-      <ProductListContainer>
-          { dataContext.products.map( product => {
-              return <ProductCard
-                        key={product.id}
-                        productData={product}
-                      />
-            })}
-      </ProductListContainer>
       
     </RightContainer>
     </>
   );
 }
 
-export default All;
+export default Deliveries;
