@@ -38,7 +38,6 @@ const Title = styled.h2`
 
 //Main Component
 function Deliveries() {
-
   return (
     <>
     <RightContainer>
