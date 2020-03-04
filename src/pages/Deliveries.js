@@ -27,7 +27,7 @@ const LogoProducts = styled.div`
 `
 const Title = styled.h2`
     width: 100%;
-    margin-top: 30px;
+    margin-top: 90px;
     text-transform: uppercase;
     text-align: center;
     font-family: 'Montserrat-ExtraBold';
@@ -42,9 +42,9 @@ function Deliveries() {
     <>
     <RightContainer>
 
-      <LogoProducts><img src={logoProducts} alt="logo" /></LogoProducts>
+      {/* <LogoProducts><img src={logoProducts} alt="logo" /></LogoProducts> */}
 
-      <Title>Deliveries</Title>
+      <Title>Delivery Area</Title>
       
     </RightContainer>
     </>

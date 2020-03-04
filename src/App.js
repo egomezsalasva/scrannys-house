@@ -9,30 +9,29 @@ import CartGuide from './componets/cartGuide/CartGuide'
 import All from './pages/All'
 import Deliveries from './pages/Deliveries'
 import PageNotFound from './pages/PageNotFound'
+import Verify from './pages/Verify'
 
 
 //Main Component
 function App() {
-
   return (
     <>
-
-
     <DataProvider>
       <Router>
 
       <HeaderBar />
-
       <CartGuide stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" />
          
       <Switch>
-        <Route exact path="/all" component={All} />
+        
         {/* <Route path="/crisps" component={Crisps} />
         <Route path="/biscuits" component={Biscuits} />
         <Route path="/sweets" component={Sweets} />
         <Route path="/chocolates" component={Chocolates} />
         <Route path="/others" component={Others} /> */}
-        <Route exact path="/" component={Deliveries} />} />
+        <Route exact path="/deliveries" component={Deliveries} />
+        <Route exact path="/all" component={All} />
+        <Route exact path="/" component={Verify}/>
         <Route component={PageNotFound} />
       </Switch>
 
