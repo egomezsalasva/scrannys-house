@@ -85,7 +85,7 @@ const SubtractButton = styled(CounterButton)`
 
 
 //Interior Components
-function IncrementButton({id, stockQuantity}) {
+const IncrementButton = ({id, stockQuantity}) => {
 
     const dataContext = useContext(DataContext)
 
@@ -99,7 +99,7 @@ function IncrementButton({id, stockQuantity}) {
                 </AddButton>
     }
 }
-function DecrementButton({id, cartQuantity}){
+const DecrementButton = ({id, cartQuantity}) => {
 
     const dataContext = useContext(DataContext)
 
@@ -137,9 +137,7 @@ function ProductBox({productData}) {
             </ProductBoxContainer>
             </>
         )
-    }
-    return null
-
+    } 
 }
 
 export default ProductBox;

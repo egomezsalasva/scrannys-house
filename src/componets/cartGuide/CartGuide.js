@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { DataContext } from '../../context'
 //Import Components
 import ProductBox from './ProductBox'
+import NoProductsBox from './NoProductsBox';
 
 
 //Styles
@@ -93,7 +94,7 @@ function CartGuide({stripeToken}) {
         if(window.Stripe) setStripe(window.Stripe(stripeToken))
     }, [stripeToken])
 
-    function stripeCheckout() {
+    const stripeCheckout = () => {
         stripe.redirectToCheckout({
             items: dataContext.cartProducts.map( item => ({ sku: item.sku, quantity: item.cartQuantity, })),
             successUrl: 'https://your-website.com/success',
@@ -101,6 +102,22 @@ function CartGuide({stripeToken}) {
         })
     }
 
+    const CartBoxes = () => {
+        if(dataContext.cartProducts.length > 0 ){
+            return (
+                dataContext.cartProducts.map( product => {
+                return <ProductBox
+                            key={product.id}
+                            productData={product}
+                        />    
+                })
+            )
+        } else {
+            return <NoProductsBox/> 
+        }
+    }
+
+    
     return (
         <>
         <CartGuideContainer>
@@ -108,12 +125,7 @@ function CartGuide({stripeToken}) {
             <TitleContainer><Title>Your Cart</Title></TitleContainer>
             
             <ProductsContainer>
-                { dataContext.cartProducts.map( product => {
-                    return <ProductBox
-                                key={product.id}
-                                productData={product}
-                            />    
-                })}
+                <CartBoxes />
             </ProductsContainer>
 
             <TotalCheckoutBar>

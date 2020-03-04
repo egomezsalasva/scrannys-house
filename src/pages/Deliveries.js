@@ -1,6 +1,8 @@
 //Import Libraries
 import React from 'react'
 import styled from 'styled-components'
+//Import Context API
+import { DataContext } from '../context' 
 //Import Images
 import logoProducts from '../assets/logoProducts.svg'
 
@@ -46,7 +48,6 @@ function Deliveries() {
       <LogoProducts><img src={logoProducts} alt="logo" /></LogoProducts>
 
       <Title>Deliveries</Title>
-
       
     </RightContainer>
     </>

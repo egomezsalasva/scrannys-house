@@ -1,6 +1,7 @@
 //Import Libraries
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import styled from 'styled-components'
 //Import Context API
 import { DataProvider } from './context' 
 //Import Components
@@ -16,6 +17,8 @@ function App() {
 
   return (
     <>
+
+
     <DataProvider>
       <Router>
 
@@ -30,7 +33,7 @@ function App() {
         <Route path="/sweets" component={Sweets} />
         <Route path="/chocolates" component={Chocolates} />
         <Route path="/others" component={Others} /> */}
-        <Route exact path="/" component={Deliveries} />
+        <Route exact path="/" component={Deliveries} />} />
         <Route component={PageNotFound} />
       </Switch>
 

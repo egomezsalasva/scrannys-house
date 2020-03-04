@@ -24,7 +24,6 @@ export function DataProvider({children}) {
         //Once the componet is mounted insert temporary products for user to edit (copy of original DB)
         useEffect(() => {
             setTempProducts()
-            console.log(cartProducts)
         }, [])
         //Create a copy of the Product DB in order to edit without overwriting initial DB. 
         //Send the products to the empty products array in state.
@@ -56,7 +55,7 @@ export function DataProvider({children}) {
         setCartTotal(cartTotal.toFixed(2))
     }
 
-
+    //EVENT LISTENERS
     const incrementQuantity = id => {
 
         const tempProducts = [...products]
