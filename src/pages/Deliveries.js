@@ -1,8 +1,6 @@
 //Import Libraries
 import React from 'react'
-import styled from 'styled-components'
-//Import Context API
-import { DataContext } from '../context' 
+import styled from 'styled-components' 
 //Import Images
 import logoProducts from '../assets/logoProducts.svg'
 
