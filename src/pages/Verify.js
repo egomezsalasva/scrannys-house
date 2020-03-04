@@ -143,6 +143,7 @@ const InstagramButton = styled.div`
 `
 
 
+
 //Main Component
 function Verify() {
     return (
