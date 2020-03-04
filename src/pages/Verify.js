@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Link } from "react-router-dom"
 //Import Images
 import logoVerify from '../assets/logoVerify.svg'
+import instagramLogo from '../assets/instagram.svg'
 import textureScrannys from '../assets/textureScrannys.png'
 
 //Styles
@@ -115,6 +116,32 @@ const GuestButton = styled(Link)`
     text-transform: uppercase;
     text-decoration: none;
 `
+const DeliveryTimesText = styled(VerifyText)`
+    margin-top: 60px;
+    text-transform: none;
+`
+const InstagramButtonContainer = styled.div`
+    position: relative;
+    background: red;
+    margin-top: 50px;
+`
+const InstagramButton = styled.div`
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: var(--scrannysBlue);
+    border-radius: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    img{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+`
+
 
 //Main Component
 function Verify() {
@@ -134,8 +161,20 @@ function Verify() {
             <EnterGuestContainer>
                 <GuestButton to="/deliveries">VISIT AS A GUEST</GuestButton>
             </EnterGuestContainer>
+            <DeliveryTimesText>
+                Deliveries will be scheduled between 19:00 and 21:00 
+                <br/>
+                <br/>
+                Orders processed after 19:00 will be scheduled for the next working day
+            </DeliveryTimesText>
+            <InstagramButtonContainer>
+                <a href="https://www.instagram.com/scrannyshouse/" target="_blank">
+                    <InstagramButton>
+                        <img src={instagramLogo} alt="instagram logo" />
+                    </InstagramButton>
+                </a>
+            </InstagramButtonContainer>
             
-
         </VerifyModalContaier>
         </>
     )
