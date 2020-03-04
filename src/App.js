@@ -23,7 +23,6 @@ function App() {
       <CartGuide stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" />
          
       <Switch>
-        
         {/* <Route path="/crisps" component={Crisps} />
         <Route path="/biscuits" component={Biscuits} />
         <Route path="/sweets" component={Sweets} />
