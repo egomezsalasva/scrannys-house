@@ -1,5 +1,5 @@
 //Import Libraries
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
 //Import Images
@@ -40,6 +40,7 @@ const VerifyAreaText = styled(VerifyText)`
     margin-top: 70px;
 `
 const VerifyOrText = styled(VerifyText)`
+    color: ${props => props.error ? "var(--scrannysRed)" : "var(--scrannysBlue)"};
     margin-top: 30px;
 `
 const FormValidationContainer = styled.div`
@@ -152,11 +153,52 @@ const InstagramButton = styled.div`
 //Main Component
 function Verify() {
 
-    const [handleChange, setHandleChange] = useState("")
+    const [postCodeInput, setPostCodeInput] = useState("")
+    const [isGuest, setIsGuest] = useState(true)
+    const [guestErrorMessage, setGuestErrorMessage] = useState("OR")
+    const [guestErrorStyle, setGuestErrorStyle] = useState(false)
 
     const validPostCodes = [
-        
+        "08001",
+        "08002",
+        "08003",
+        "08005",
+        "08007",
+        "08008",
+        "08009",
+        "08010",
+        "08011",
+        "08012",
+        "08013",
+        "08015",
+        "08018",
+        "08019",
+        "08025",
+        "08026",
+        "08036",
+        "08037",
+        "08037",
     ]
+
+    useEffect(() => {
+        verifyButton()
+    })
+
+    const verifyButton = () => {
+        validPostCodes.map( postCode => {
+            if(postCodeInput === postCode){
+                setIsGuest(false)
+            }
+        })
+    }
+
+    const checkErrorMessage = () => {
+        if(isGuest === true) {
+            setGuestErrorMessage("WE ARE SORRY BUT YOUR POST CODE IS NOT WITHIN OUR DELIVERY AREA, YOU CAN TRY AGAIN OR")
+            setGuestErrorStyle(true)
+        }
+    }
+
 
 
     return (
@@ -174,11 +216,13 @@ function Verify() {
                         onFocus={(e) => e.target.placeholder = ""} 
                         onBlur={(e) => e.target.placeholder = "ENTER POST CODE"}
                         autoComplete="off"
+                        value={postCodeInput}
+                        onChange={e => setPostCodeInput(e.target.value)}
                     />
-                    <VerifyButton to="/all">VISIT SCRANNY’S HOUSE</VerifyButton>
+                    <VerifyButton to={ isGuest === true ? "/" : "/all" } onClick={() => checkErrorMessage()}>VISIT SCRANNY’S HOUSE</VerifyButton>
                 </FormBox>
             </FormValidationContainer>
-            <VerifyOrText> OR </VerifyOrText>
+            <VerifyOrText error={guestErrorStyle}>{guestErrorMessage}</VerifyOrText>
             <EnterGuestContainer>
                 <GuestButton to="/deliveries">VISIT AS A GUEST</GuestButton>
             </EnterGuestContainer>

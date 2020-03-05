@@ -19,6 +19,7 @@ export function DataProvider({children}) {
     const [cartProducts, setCartProducts] = useState([])
     const [cartTotal, setCartTotal] = useState(0)
 
+
     //CREATING COPY OF DB DATA
     //(we want original DB to only be edited once the payment has been accepted)
         //Once the componet is mounted insert temporary products for user to edit (copy of original DB)
