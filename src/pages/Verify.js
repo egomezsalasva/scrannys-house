@@ -1,5 +1,5 @@
 //Import Libraries
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
 //Import Images
@@ -63,11 +63,11 @@ const CityBox = styled.div`
     letter-spacing: 1.72px;
     text-align: center;
     line-height: 46px;
-    transform: translateY(1px);
     text-transform: uppercase;
     display: inline-block;
+    border: 1px solid var(--scrannysOrange50over50);
 `
-const PostalBox = styled.div`
+const PostalBox = styled.input`
     width: 180px;
     height: 46px;
     background: var(--scrannysOrange50);
@@ -78,10 +78,15 @@ const PostalBox = styled.div`
     letter-spacing: 1.72px;
     text-align: center;
     line-height: 46px;
-    transform: translateY(1px);
     text-transform: uppercase;
     display: inline-block;
     margin-left: 16px;
+    border: 1px solid var(--scrannysBlue);
+    outline: none;
+    ::placeholder { 
+        color: var(--scrannysBlue);
+        opacity: 1;
+    }
 `
 const VerifyButton = styled(Link)`
     width: 270px;
@@ -94,12 +99,12 @@ const VerifyButton = styled(Link)`
     letter-spacing: 1.72px;
     text-align: center;
     line-height: 46px;
-    transform: translateY(1px);
     text-transform: uppercase;
     display: inline-block;
     margin-left: 16px;
     text-decoration: none;
     cursor: pointer;
+    border: 1px solid var(--scrannysOrange50over50);
 `
 const EnterGuestContainer = styled.div`
     margin-top: 15px;
@@ -119,6 +124,9 @@ const GuestButton = styled(Link)`
 const DeliveryTimesText = styled(VerifyText)`
     margin-top: 60px;
     text-transform: none;
+    span{
+        font-family: 'Montserrat-ExtraBold'; 
+    }
 `
 const InstagramButtonContainer = styled.div`
     position: relative;
@@ -141,9 +149,16 @@ const InstagramButton = styled.div`
         transform: translate(-50%, -50%);
     }
 `
-
 //Main Component
 function Verify() {
+
+    const [handleChange, setHandleChange] = useState("")
+
+    const validPostCodes = [
+        
+    ]
+
+
     return (
         <>
         <VerifyModalContaier>
@@ -152,16 +167,23 @@ function Verify() {
             <FormValidationContainer>
                 <FormBox>
                     <CityBox>Barcelona</CityBox>
-                    <PostalBox>Enter Post Code</PostalBox>
+                    <PostalBox 
+                        type="text" 
+                        name="Post Code" 
+                        placeholder="ENTER POST CODE"
+                        onFocus={(e) => e.target.placeholder = ""} 
+                        onBlur={(e) => e.target.placeholder = "ENTER POST CODE"}
+                        autoComplete="off"
+                    />
                     <VerifyButton to="/all">VISIT SCRANNY’S HOUSE</VerifyButton>
                 </FormBox>
             </FormValidationContainer>
-            <VerifyOrText>OR</VerifyOrText>
+            <VerifyOrText> OR </VerifyOrText>
             <EnterGuestContainer>
                 <GuestButton to="/deliveries">VISIT AS A GUEST</GuestButton>
             </EnterGuestContainer>
             <DeliveryTimesText>
-                Deliveries will be scheduled between 19:00 and 21:00 
+                Deliveries will be scheduled between <span>19:00</span> and <span>21:00</span> 
                 <br/>
                 <br/>
                 Orders processed after 19:00 will be scheduled for the next working day
