@@ -153,11 +153,15 @@ const InstagramButton = styled.div`
 //Main Component
 function Verify() {
 
-    const [postCodeInput, setPostCodeInput] = useState("")
+
+    //Global State
     const [isGuest, setIsGuest] = useState(true)
+    //State
+    const [postCodeInput, setPostCodeInput] = useState("")
     const [guestErrorMessage, setGuestErrorMessage] = useState("OR")
     const [guestErrorStyle, setGuestErrorStyle] = useState(false)
 
+    //Data
     const validPostCodes = [
         "08001",
         "08002",
@@ -180,11 +184,12 @@ function Verify() {
         "08037",
     ]
 
+    //State checks
     useEffect(() => {
-        verifyButton()
+        //Constantly checks post code match to change the to="" property in react router button
+        checkPostCodeMatch()
     })
-
-    const verifyButton = () => {
+    const checkPostCodeMatch = () => {
         validPostCodes.map( postCode => {
             if(postCodeInput === postCode){
                 setIsGuest(false)
@@ -192,7 +197,9 @@ function Verify() {
         })
     }
 
+    //Event Handlers
     const checkErrorMessage = () => {
+        //On button click checks if it should display error message if postcode dosnt match
         if(isGuest === true) {
             setGuestErrorMessage("WE ARE SORRY BUT YOUR POST CODE IS NOT WITHIN OUR DELIVERY AREA, YOU CAN TRY AGAIN OR")
             setGuestErrorStyle(true)
