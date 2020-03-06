@@ -8,7 +8,7 @@ const ProductBoxContainer = styled.div`
     position: relative;
     width: 100%;
     height: 100px;
-    background: var(--scrannysOrange50over50);
+    background: var(--scrannysRed);
     margin-bottom: 5px;
 `
 const ProductTitle = styled.p`
@@ -17,21 +17,24 @@ const ProductTitle = styled.p`
     font-size: 11px;
     letter-spacing: 0.83px;
     line-height: 14px;
-    width: 190px;
-    height: 40px;
-    margin-top: 20px;
-    margin-left: 30px;
+    width: 100%;
+    padding: 0 30px;
+    color: var(--scrannysLightWhite);
+    /* height: 40px; */
+    margin-top: 13px;
+    /* margin-left: 30px; */
+    text-align: center
 `
 
 //Main Component
-const NoProductsBox = () => {
+const CantCheckoutBox = () => {
     return (
         <>
         <ProductBoxContainer>
-            <ProductTitle>No Products in the Cart</ProductTitle>        
+            <ProductTitle>Cant checkout as a guest please enter a valid post code if you with to purchase our products. You can check if you are on our delivery area on our DELIVERIES page</ProductTitle>        
         </ProductBoxContainer>
         </>
     ) 
 }
 
-export default NoProductsBox;
+export default CantCheckoutBox;

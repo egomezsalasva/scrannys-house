@@ -18,6 +18,7 @@ export function DataProvider({children}) {
     // const [sweetsProducts, setSweetsProducts] = useState([])
     const [cartProducts, setCartProducts] = useState([])
     const [cartTotal, setCartTotal] = useState(0)
+    const [isGuest, setIsGuest] = useState(true)
 
 
     //CREATING COPY OF DB DATA
@@ -78,7 +79,6 @@ export function DataProvider({children}) {
         calculateCartTotal()
     }
 
-    
     const decrementQuantity = id => {
 
         const tempProducts = [...products]
@@ -102,6 +102,39 @@ export function DataProvider({children}) {
         // product.totalPrice = (product.price * product.cartQuantity).toFixed(2)   
     }
 
+    //VERIFY POST CODE
+    const validPostCodes = [
+        "08001",
+        "08002",
+        "08003",
+        "08005",
+        "08007",
+        "08008",
+        "08009",
+        "08010",
+        "08011",
+        "08012",
+        "08013",
+        "08015",
+        "08018",
+        "08019",
+        "08025",
+        "08026",
+        "08036",
+        "08037",
+        "08037",
+    ]
+
+    //BUG if the user types a valid post code and then changes to non valid still results in false
+    //Possibly issue with useEffect
+    const checkPostCodeMatch = postCodeInput => {
+        validPostCodes.map( postCode => {
+            if(postCodeInput === postCode){
+                setIsGuest(false)
+            }
+        })
+    }
+
 
     //Format cartProducts.cartquantity if float ends in 00 (eg. €1.00) remove the .00
    
@@ -113,6 +146,8 @@ export function DataProvider({children}) {
             cartTotal,
             incrementQuantity,
             decrementQuantity,
+            isGuest,
+            checkPostCodeMatch,
         }}>
             {children}
         </DataContext.Provider>

@@ -1,19 +1,21 @@
 //Import Libraries
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
 //Import Images
 import logoVerify from '../assets/logoVerify.svg'
 import instagramLogo from '../assets/instagram.svg'
 import textureScrannys from '../assets/textureScrannys.png'
+//Import Data
+import { DataContext } from '../context'
 
 //Styles
 const VerifyModalContaier = styled.div`
-    position: fixed;
+    position: absolute;
     background: #FEF6EE url(${textureScrannys});
     background-size: 200px;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     z-index: 1000;
 `
 const LogoProducts = styled.div`
@@ -154,53 +156,26 @@ const InstagramButton = styled.div`
 function Verify() {
 
 
-    //Global State
-    const [isGuest, setIsGuest] = useState(true)
+    const dataContext = useContext(DataContext)
+
     //State
     const [postCodeInput, setPostCodeInput] = useState("")
     const [guestErrorMessage, setGuestErrorMessage] = useState("OR")
     const [guestErrorStyle, setGuestErrorStyle] = useState(false)
 
     //Data
-    const validPostCodes = [
-        "08001",
-        "08002",
-        "08003",
-        "08005",
-        "08007",
-        "08008",
-        "08009",
-        "08010",
-        "08011",
-        "08012",
-        "08013",
-        "08015",
-        "08018",
-        "08019",
-        "08025",
-        "08026",
-        "08036",
-        "08037",
-        "08037",
-    ]
+    
 
     //State checks
     useEffect(() => {
         //Constantly checks post code match to change the to="" property in react router button
-        checkPostCodeMatch()
+        dataContext.checkPostCodeMatch(postCodeInput)
     })
-    const checkPostCodeMatch = () => {
-        validPostCodes.map( postCode => {
-            if(postCodeInput === postCode){
-                setIsGuest(false)
-            }
-        })
-    }
-
+    
     //Event Handlers
     const checkErrorMessage = () => {
         //On button click checks if it should display error message if postcode dosnt match
-        if(isGuest === true) {
+        if(dataContext.isGuest === true) {
             setGuestErrorMessage("WE ARE SORRY BUT YOUR POST CODE IS NOT WITHIN OUR DELIVERY AREA, YOU CAN TRY AGAIN OR")
             setGuestErrorStyle(true)
         }
@@ -226,7 +201,7 @@ function Verify() {
                         value={postCodeInput}
                         onChange={e => setPostCodeInput(e.target.value)}
                     />
-                    <VerifyButton to={ isGuest === true ? "/" : "/all" } onClick={() => checkErrorMessage()}>VISIT SCRANNY’S HOUSE</VerifyButton>
+                    <VerifyButton to={ dataContext.isGuest === true ? "/" : "/all" } onClick={() => checkErrorMessage()}>VISIT SCRANNY’S HOUSE</VerifyButton>
                 </FormBox>
             </FormValidationContainer>
             <VerifyOrText error={guestErrorStyle}>{guestErrorMessage}</VerifyOrText>

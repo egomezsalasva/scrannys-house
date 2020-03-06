@@ -6,6 +6,7 @@ import { DataContext } from '../../context'
 //Import Components
 import ProductBox from './ProductBox'
 import NoProductsBox from './NoProductsBox';
+import CantCheckoutBox from './CantCheckoutBox'
 
 
 //Styles
@@ -125,6 +126,7 @@ function CartGuide({stripeToken}) {
             <TitleContainer><Title>Your Cart</Title></TitleContainer>
             
             <ProductsContainer>
+                { dataContext.isGuest ?  <CantCheckoutBox /> : null }
                 <CartBoxes />
             </ProductsContainer>
 
