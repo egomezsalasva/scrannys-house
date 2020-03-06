@@ -1,5 +1,5 @@
 //Import Libraries
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useRef } from 'react'
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
 //Import Images
@@ -153,7 +153,7 @@ const InstagramButton = styled.div`
     }
 `
 //Main Component
-function Verify() {
+function Verify(props) {
 
 
     const dataContext = useContext(DataContext)
@@ -162,7 +162,7 @@ function Verify() {
     const [postCodeInput, setPostCodeInput] = useState("")
     const [guestErrorMessage, setGuestErrorMessage] = useState("OR")
     const [guestErrorStyle, setGuestErrorStyle] = useState(false)
-
+    const postCodeInputRef = useRef()
     //Data
     
 
@@ -178,10 +178,21 @@ function Verify() {
         if(dataContext.isGuest === true) {
             setGuestErrorMessage("WE ARE SORRY BUT YOUR POST CODE IS NOT WITHIN OUR DELIVERY AREA, YOU CAN TRY AGAIN OR")
             setGuestErrorStyle(true)
+            postCodeInputRef.current.select();
         }
     }
 
+    const handleEnterEvent = keyPressed => {
+        if(keyPressed === 'Enter'){
+            if(dataContext.isGuest === true ) {
+                checkErrorMessage()
+            } else {
+                props.history.push('/all');
+            }
+        }
+    }
 
+    console.log(props)
 
     return (
         <>
@@ -200,6 +211,8 @@ function Verify() {
                         autoComplete="off"
                         value={postCodeInput}
                         onChange={e => setPostCodeInput(e.target.value)}
+                        onKeyPress={ e => handleEnterEvent(e.key) }
+                        ref={postCodeInputRef}
                     />
                     <VerifyButton to={ dataContext.isGuest === true ? "/" : "/all" } onClick={() => checkErrorMessage()}>VISIT SCRANNY’S HOUSE</VerifyButton>
                 </FormBox>
