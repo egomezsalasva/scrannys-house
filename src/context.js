@@ -122,7 +122,6 @@ export function DataProvider({children}) {
         "08026",
         "08036",
         "08037",
-        "08037",
     ]
 
     //BUG if the user types a valid post code and then changes to non valid still results in false

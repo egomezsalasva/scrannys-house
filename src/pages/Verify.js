@@ -163,8 +163,7 @@ function Verify(props) {
     const [guestErrorMessage, setGuestErrorMessage] = useState("OR")
     const [guestErrorStyle, setGuestErrorStyle] = useState(false)
     const postCodeInputRef = useRef()
-    //Data
-    
+ 
 
     //State checks
     useEffect(() => {
@@ -181,7 +180,6 @@ function Verify(props) {
             postCodeInputRef.current.select();
         }
     }
-
     const handleEnterEvent = keyPressed => {
         if(keyPressed === 'Enter'){
             if(dataContext.isGuest === true ) {
@@ -192,7 +190,6 @@ function Verify(props) {
         }
     }
 
-    console.log(props)
 
     return (
         <>

@@ -1,8 +1,6 @@
 //Import Libraries
 import React from 'react'
 import styled from 'styled-components' 
-//Import Images
-import logoProducts from '../assets/logoProducts.svg'
 
 
 //Styles
@@ -14,17 +12,6 @@ const RightContainer = styled.div`
     right: 0;
     overflow-y: scroll;
 `
-const LogoProducts = styled.div`
-    width: 100%;
-    height: 140px;
-    margin-top: 40px;
-    img{
-      position: absolute;
-      height: 140px;
-      left: 50%;
-      transform: translateX(calc(-50% - 10px));
-    }
-`
 const Title = styled.h2`
     width: 100%;
     margin-top: 90px;
@@ -34,7 +21,18 @@ const Title = styled.h2`
     font-size: 28px;
     letter-spacing: 4.3px;
 `
-
+const MapContainer = styled.div`
+    width: 760px;
+    height: 430px;
+    margin-top: 60px;
+    margin-left: 140px;
+    background: var(--scrannysOrange);
+    iframe{
+      margin-top: 10px;
+      margin-left: 10px;
+      border: none;
+    }
+`
 
 //Main Component
 function Deliveries() {
@@ -45,6 +43,10 @@ function Deliveries() {
       {/* <LogoProducts><img src={logoProducts} alt="logo" /></LogoProducts> */}
 
       <Title>Delivery Area</Title>
+
+      <MapContainer>
+        <iframe src="https://www.google.com/maps/d/embed?mid=1M5piK7yT_GKICW93HJC5jJXElUHliv6G" width="740" height="410"></iframe>
+      </MapContainer>
       
     </RightContainer>
     </>
