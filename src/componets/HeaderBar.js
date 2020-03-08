@@ -1,8 +1,10 @@
 //Import Libraries
 import React from 'react';
 import styled from 'styled-components'
+import { Link } from "react-router-dom"
 //Import Images
 import logoHeader from '../assets/logoHeader.svg'
+import instagramLogo from '../assets/instagram.svg'
 
 
 //Styles
@@ -21,34 +23,119 @@ const Logo = styled.img`
     width: 60px;
     left: 9px;
 `
-// const MunchiesButton = styled.div`
-//     width: 120px;
-//     height: 80px;
-//     background: red;
-//     transform: rotate(-90deg);
-//     position: absolute;
-//     top: 0;
-    
-// `
-
+const Nav = styled.nav`   
+`
+const MunchiesButton = styled.button`
+    position: absolute;
+    top: 50%;
+    transform: translate(calc(-50% + 40px), calc(-50% - 70px)) rotate(90deg);
+    width: 140px;
+    height: 80px;
+    background: var(--scrannysGreen);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+`
+const MunchiesSubmenu = styled.div`
+    position: fixed;
+    width: 320px;
+    height: 100vh;
+    background: var(--scrannysGreen);
+    left: 80px;
+    top: 0;
+    z-index: 500;
+`
+const MunchiesNav = styled.div`
+    margin-top: calc(50vh);
+    transform: translateY(-50%);
+`
+const MunchiesLink = styled(Link)`
+    display: block;
+    font-family: 'Montserrat-SemiBold';
+    font-size: 18px;
+    color: var(--scrannysWhite);
+    letter-spacing: 1.5px;
+    text-align: center;
+    line-height: 18px;
+    padding: 5px 0;
+    margin: 5px 0;
+    text-transform: uppercase;
+    text-decoration: none;
+`
+const DeliveryButton = styled(Link)`
+    position: absolute;
+    top: 50%;
+    transform: translate(calc(-50% + 40px), calc(-50% + 140px - 70px)) rotate(90deg);
+    width: 140px;
+    height: 80px;
+    background: var(--scrannysRed);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+`
+const ButtonText = styled.div`
+    transform: rotate(180deg);
+    text-align: center;
+    line-height: 80px;
+    text-transform: uppercase;
+    font-family: 'Montserrat-SemiBold';
+    font-size: 14px;
+    color: var(--scrannysWhite);
+    letter-spacing: 1.17px;
+`
+const InstagramButton = styled.div`
+    position: absolute;
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    background: var(--scrannysBlue);
+    border-radius: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    img{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+`
 
 //Main Component
 function HeaderBar() {
+
+
+
   return (
     <>
     <BarContainer>
         <Logo src={logoHeader}/>
-        {/* <MunchiesButton>Munchies</MunchiesButton> */}
-        {/* <Nav>
-            <MunchiesNav>
-                <MunchiesButton />
-                <MunchiesSubmenu />
-            </MunchiesNav>
-            <DeliveryNav>
-                <DeliveryButton />
-            </DeliveryNav>
-        </Nav> */}
+        <Nav>
+            <MunchiesButton>
+                <ButtonText>Munchies</ButtonText>
+            </MunchiesButton>
+            <DeliveryButton to="/deliveries">
+                <ButtonText>Deliveries</ButtonText>
+            </DeliveryButton>
+        </Nav>
+        <a href="https://www.instagram.com/scrannyshouse/" target="_blank">
+            <InstagramButton>
+                <img src={instagramLogo} alt="instagram logo" />
+            </InstagramButton>
+        </a>
     </BarContainer>
+    <MunchiesSubmenu>
+        <MunchiesNav>
+            <MunchiesLink to="/all">All</MunchiesLink>
+            <MunchiesLink to="/crisps">Crisps</MunchiesLink>
+            <MunchiesLink to="/biscuits">Biscuits</MunchiesLink>
+            <MunchiesLink to="/chocolates">Chocolates</MunchiesLink>
+            <MunchiesLink to="/sweets">Sweets</MunchiesLink>
+            <MunchiesLink to="/others">Others</MunchiesLink>
+        </MunchiesNav>
+    </MunchiesSubmenu>
     </>
   );
 }

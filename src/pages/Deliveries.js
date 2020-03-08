@@ -25,11 +25,12 @@ const MapContainer = styled.div`
     width: 760px;
     height: 430px;
     margin-top: 60px;
-    margin-left: 140px;
+    text-align: center;
     background: var(--scrannysOrange);
+    margin-left: 50%;
+    transform: translateX(-50%);
     iframe{
       margin-top: 10px;
-      margin-left: 10px;
       border: none;
     }
 `
@@ -45,7 +46,7 @@ function Deliveries() {
       <Title>Delivery Area</Title>
 
       <MapContainer>
-        <iframe src="https://www.google.com/maps/d/embed?mid=1M5piK7yT_GKICW93HJC5jJXElUHliv6G" width="740" height="410"></iframe>
+        <iframe src="https://www.google.com/maps/d/embed?mid=1M5piK7yT_GKICW93HJC5jJXElUHliv6G" width="740" height="410" />
       </MapContainer>
       
     </RightContainer>
