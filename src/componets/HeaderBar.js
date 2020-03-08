@@ -1,7 +1,8 @@
 //Import Libraries
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
+import { TimelineMax } from "gsap";
 //Import Images
 import logoHeader from '../assets/logoHeader.svg'
 import instagramLogo from '../assets/instagram.svg'
@@ -16,6 +17,7 @@ const BarContainer = styled.div`
     top: 0;
     left: 0;
     background: var(--scrannysBlue);
+    z-index: 1000;
 `
 const Logo = styled.img`
     position: absolute;
@@ -45,10 +47,12 @@ const MunchiesSubmenu = styled.div`
     left: 80px;
     top: 0;
     z-index: 500;
+    transform: translateX(-320px);
 `
 const MunchiesNav = styled.div`
     margin-top: calc(50vh);
     transform: translateY(-50%);
+
 `
 const MunchiesLink = styled(Link)`
     display: block;
@@ -106,17 +110,26 @@ const InstagramButton = styled.div`
 //Main Component
 function HeaderBar() {
 
-    const[submenuActive, setSubmenuActive] = useState(false)
+    let submenuRef = useRef(null);
+    let submenuTl = new TimelineMax( {paused: false, reversed: true} )
+      
+    useEffect( () => {
+        submenuTl.to( submenuRef, 0.4, { x: 0 } )
+    }, [])
+
+    const submenuToggle = () => {
+        submenuTl.reversed() ? submenuTl.play() : submenuTl.reverse()
+    }
 
     return (
         <>
         <BarContainer>
             <Logo src={logoHeader}/>
             <Nav>
-                <MunchiesButton>
+                <MunchiesButton onClick={ () =>  submenuToggle() }>
                     <ButtonText>Munchies</ButtonText>
                 </MunchiesButton>
-                <DeliveryButton to="/deliveries">
+                <DeliveryButton to="/deliveries" onClick={ () =>  submenuTl.reverse() }>
                     <ButtonText>Deliveries</ButtonText>
                 </DeliveryButton>
             </Nav>
@@ -126,14 +139,14 @@ function HeaderBar() {
                 </InstagramButton>
             </a>
         </BarContainer>
-        <MunchiesSubmenu>
+        <MunchiesSubmenu ref={ e => submenuRef = e } >
             <MunchiesNav>
-                <MunchiesLink to="/all">All</MunchiesLink>
-                <MunchiesLink to="/crisps">Crisps</MunchiesLink>
-                <MunchiesLink to="/biscuits">Biscuits</MunchiesLink>
-                <MunchiesLink to="/chocolates">Chocolates</MunchiesLink>
-                <MunchiesLink to="/sweets">Sweets</MunchiesLink>
-                <MunchiesLink to="/others">Others</MunchiesLink>
+                <MunchiesLink to="/all" onClick={ () =>  submenuTl.reverse() }>All</MunchiesLink>
+                <MunchiesLink to="/crisps" onClick={ () =>  submenuTl.reverse() }>Crisps</MunchiesLink>
+                <MunchiesLink to="/biscuits" onClick={ () =>  submenuTl.reverse() }>Biscuits</MunchiesLink>
+                <MunchiesLink to="/chocolates" onClick={ () =>  submenuTl.reverse() }>Chocolates</MunchiesLink>
+                <MunchiesLink to="/sweets" onClick={ () =>  submenuTl.reverse() }>Sweets</MunchiesLink>
+                <MunchiesLink to="/others" onClick={ () =>  submenuTl.reverse() }>Others</MunchiesLink>
             </MunchiesNav>
         </MunchiesSubmenu>
         </>
