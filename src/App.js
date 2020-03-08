@@ -7,6 +7,11 @@ import { DataProvider } from './context'
 import HeaderBar from './componets/HeaderBar'
 import CartGuide from './componets/cartGuide/CartGuide'
 import All from './pages/All'
+import Crisps from './pages/Crisps'
+import Biscuits from './pages/Biscuits'
+import Sweets from './pages/Sweets'
+import Chocolates from './pages/Chocolates'
+import Others from './pages/Others'
 import Deliveries from './pages/Deliveries'
 import PageNotFound from './pages/PageNotFound'
 import Verify from './pages/Verify'
@@ -23,11 +28,11 @@ function App() {
       <CartGuide stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" />
          
       <Switch>
-        {/* <Route path="/crisps" component={Crisps} />
+        <Route path="/crisps" component={Crisps} />
         <Route path="/biscuits" component={Biscuits} />
         <Route path="/sweets" component={Sweets} />
         <Route path="/chocolates" component={Chocolates} />
-        <Route path="/others" component={Others} /> */}
+        <Route path="/others" component={Others} />
         <Route exact path="/deliveries" component={Deliveries} />
         <Route exact path="/all" component={All} />
         <Route exact path="/" component={Verify}/>

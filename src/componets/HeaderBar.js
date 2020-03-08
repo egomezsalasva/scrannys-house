@@ -1,5 +1,5 @@
 //Import Libraries
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
 //Import Images
@@ -106,38 +106,38 @@ const InstagramButton = styled.div`
 //Main Component
 function HeaderBar() {
 
+    const[submenuActive, setSubmenuActive] = useState(false)
 
-
-  return (
-    <>
-    <BarContainer>
-        <Logo src={logoHeader}/>
-        <Nav>
-            <MunchiesButton>
-                <ButtonText>Munchies</ButtonText>
-            </MunchiesButton>
-            <DeliveryButton to="/deliveries">
-                <ButtonText>Deliveries</ButtonText>
-            </DeliveryButton>
-        </Nav>
-        <a href="https://www.instagram.com/scrannyshouse/" target="_blank">
-            <InstagramButton>
-                <img src={instagramLogo} alt="instagram logo" />
-            </InstagramButton>
-        </a>
-    </BarContainer>
-    <MunchiesSubmenu>
-        <MunchiesNav>
-            <MunchiesLink to="/all">All</MunchiesLink>
-            <MunchiesLink to="/crisps">Crisps</MunchiesLink>
-            <MunchiesLink to="/biscuits">Biscuits</MunchiesLink>
-            <MunchiesLink to="/chocolates">Chocolates</MunchiesLink>
-            <MunchiesLink to="/sweets">Sweets</MunchiesLink>
-            <MunchiesLink to="/others">Others</MunchiesLink>
-        </MunchiesNav>
-    </MunchiesSubmenu>
-    </>
-  );
+    return (
+        <>
+        <BarContainer>
+            <Logo src={logoHeader}/>
+            <Nav>
+                <MunchiesButton>
+                    <ButtonText>Munchies</ButtonText>
+                </MunchiesButton>
+                <DeliveryButton to="/deliveries">
+                    <ButtonText>Deliveries</ButtonText>
+                </DeliveryButton>
+            </Nav>
+            <a href="https://www.instagram.com/scrannyshouse/" target="_blank">
+                <InstagramButton>
+                    <img src={instagramLogo} alt="instagram logo" />
+                </InstagramButton>
+            </a>
+        </BarContainer>
+        <MunchiesSubmenu>
+            <MunchiesNav>
+                <MunchiesLink to="/all">All</MunchiesLink>
+                <MunchiesLink to="/crisps">Crisps</MunchiesLink>
+                <MunchiesLink to="/biscuits">Biscuits</MunchiesLink>
+                <MunchiesLink to="/chocolates">Chocolates</MunchiesLink>
+                <MunchiesLink to="/sweets">Sweets</MunchiesLink>
+                <MunchiesLink to="/others">Others</MunchiesLink>
+            </MunchiesNav>
+        </MunchiesSubmenu>
+        </>
+    );
 }
 
 export default HeaderBar;
