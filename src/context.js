@@ -1,5 +1,5 @@
 //Import Libraries
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 //Import Data from DB
 import PRODUCTS_DB from './data/data'
 
@@ -8,17 +8,29 @@ import PRODUCTS_DB from './data/data'
 export const DataContext = React.createContext()
 
 
+
 //Provider
 export function DataProvider({children}) {
 
     const [products, setProducts] = useState([])
-    // const [crispsProducts, setCrispsProducts] = useState([])
-    // const [biscuitsProducts, setBiscuitsProducts] = useState([])
-    // const [chocolatesProducts, setChocolatesProducts] = useState([])
-    // const [sweetsProducts, setSweetsProducts] = useState([])
     const [cartProducts, setCartProducts] = useState([])
     const [cartTotal, setCartTotal] = useState(0)
     const [isGuest, setIsGuest] = useState(true)
+
+    let reducer = (info, newInfo) => {
+        if (newInfo === null) {
+            localStorage.removeItem("info");
+            return isGuest;
+        }
+        return { ...info, ...newInfo };
+    }
+
+    const localState = JSON.parse(localStorage.getItem("info"))
+    const [isGuestLocal, setIsGuestLocal] = useReducer(reducer, localState || isGuest)
+
+    useEffect(() => {
+        localStorage.setItem("info", JSON.stringify(isGuestLocal));
+    }, [isGuestLocal]);
 
 
     //CREATING COPY OF DB DATA
@@ -145,8 +157,8 @@ export function DataProvider({children}) {
             cartTotal,
             incrementQuantity,
             decrementQuantity,
-            isGuest,
             checkPostCodeMatch,
+            isGuestLocal,
         }}>
             {children}
         </DataContext.Provider>
