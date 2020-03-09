@@ -114,7 +114,7 @@ function HeaderBar() {
     let submenuTl = new TimelineMax( {paused: false, reversed: true} )
       
     useEffect( () => {
-        submenuTl.to( submenuRef, 0.4, { x: 0 } )
+        submenuTl.to( submenuRef, 0.5, { x: 0 } )
     }, [])
 
     const submenuToggle = () => {
