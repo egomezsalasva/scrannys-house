@@ -118,6 +118,9 @@ function CartGuide({stripeToken}) {
         }
     }
 
+    //TODO Minimum order message disable checkout
+    //TODO if isGuest dissable checkout
+
     
     return (
         <>
