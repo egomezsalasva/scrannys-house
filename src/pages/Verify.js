@@ -43,6 +43,7 @@ const VerifyAreaText = styled(VerifyText)`
 `
 const VerifyOrText = styled(VerifyText)`
     color: ${props => props.error ? "var(--scrannysRed)" : "var(--scrannysBlue)"};
+    font-weight: ${props => props.error ? "var(--scrannysFontBold)" : "var(--scrannysFontLight)"};
     margin-top: 30px;
 `
 const FormValidationContainer = styled.div`
@@ -152,6 +153,8 @@ const InstagramButton = styled.div`
         transform: translate(-50%, -50%);
     }
 `
+
+
 //Main Component
 function Verify(props) {
 
