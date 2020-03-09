@@ -28,12 +28,12 @@ function App() {
       <CartGuide stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" />
          
       <Switch>
+        <Route exact path="/deliveries" component={Deliveries} />
         <Route path="/crisps" component={Crisps} />
         <Route path="/biscuits" component={Biscuits} />
         <Route path="/sweets" component={Sweets} />
         <Route path="/chocolates" component={Chocolates} />
         <Route path="/others" component={Others} />
-        <Route exact path="/deliveries" component={Deliveries} />
         <Route exact path="/all" component={All} />
         <Route exact path="/" component={Verify}/>
         <Route component={PageNotFound} />

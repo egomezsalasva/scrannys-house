@@ -12,14 +12,12 @@ export const DataContext = React.createContext()
 export function DataProvider({children}) {
 
     const [products, setProducts] = useState([])
-    // const [crispsProducts, setCrispsProducts] = useState([])
-    // const [biscuitsProducts, setBiscuitsProducts] = useState([])
-    // const [chocolatesProducts, setChocolatesProducts] = useState([])
-    // const [sweetsProducts, setSweetsProducts] = useState([])
     const [cartProducts, setCartProducts] = useState([])
     const [cartTotal, setCartTotal] = useState(0)
     const [isGuest, setIsGuest] = useState(true)
 
+    //TODO localStorage for products and is guest
+    //TODO When on route enter "/" reset isGuest to true (only on route enter)
 
     //CREATING COPY OF DB DATA
     //(we want original DB to only be edited once the payment has been accepted)
@@ -128,7 +126,7 @@ export function DataProvider({children}) {
     //Possibly issue with useEffect
     const checkPostCodeMatch = postCodeInput => {
         validPostCodes.map( postCode => {
-            if(postCodeInput === postCode){
+            if(parseInt(postCodeInput) === parseInt(postCode)){
                 setIsGuest(false)
             }
         })
