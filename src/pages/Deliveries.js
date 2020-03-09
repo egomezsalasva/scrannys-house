@@ -41,13 +41,15 @@ function Deliveries() {
     <>
     <RightContainer>
 
-      {/* <LogoProducts><img src={logoProducts} alt="logo" /></LogoProducts> */}
-
       <Title>Delivery Area</Title>
+      
+      {/* //TODO google maps api */}
 
       <MapContainer>
         <iframe src="https://www.google.com/maps/d/embed?mid=1M5piK7yT_GKICW93HJC5jJXElUHliv6G" width="740" height="410" />
       </MapContainer>
+
+      {/* //TODO text for times */}
       
     </RightContainer>
     </>
