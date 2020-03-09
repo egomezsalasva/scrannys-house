@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
-import { TimelineMax } from "gsap"
+import { TimelineMax } from "gsap/all"
 //Import Images
 import logoHeader from '../assets/logoHeader.svg'
 import instagramLogo from '../assets/instagram.svg'
