@@ -13,17 +13,15 @@ const ProductBoxContainer = styled.div`
 `
 const ProductTitle = styled.p`
     display: inline-block;
-    font-family: var(--scrannysFontLight);
+    font-weight: var(--scrannysFontLight);
     font-size: 11px;
     letter-spacing: 0.83px;
     line-height: 14px;
     width: 100%;
     padding: 0 30px;
     color: var(--scrannysLightWhite);
-    /* height: 40px; */
     margin-top: 13px;
-    /* margin-left: 30px; */
-    text-align: center
+    text-align: center;
 `
 
 //Main Component

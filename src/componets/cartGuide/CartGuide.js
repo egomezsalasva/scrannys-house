@@ -23,7 +23,7 @@ const TitleContainer = styled.div`
     width: 100%;
 `
 const Title = styled.h1`
-    font-family: 'Montserrat-SemiBold';
+    font-weight: var(--scrannysFontLight);
     font-size: 22px;
     letter-spacing: 2px;
     text-align: center;
@@ -47,7 +47,7 @@ const TotalCheckoutBar = styled.div`
 `
 const TotalTitle = styled.div`
     display: inline-block;
-    font-family: var(--scrannysFontLight);
+    font-weight: var(--scrannysFontLight);
     font-size: 16px;
     color: var(--scrannysBlue);
     letter-spacing: 1px;
@@ -56,7 +56,7 @@ const TotalTitle = styled.div`
 `
 const TotalPrice = styled.div`
     display: inline-block;
-    font-family: var(--scrannysFontBold);
+    font-weight: var(--scrannysFontBold);
     font-size: 18px;
     color: var(--scrannysBlue);
     letter-spacing: 1px;
@@ -76,7 +76,7 @@ const CheckoutButton = styled.button`
    position: absolute;
    right: 20px;
    text-align: center;
-   font-family: var(--scrannysFontLight);
+   font-weight: var(--scrannysFontLight);
    font-size: 14px;
    letter-spacing: 1.17px;
    outline: none;

@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
-import { TimelineMax } from "gsap";
+import { TimelineMax } from "gsap"
 //Import Images
 import logoHeader from '../assets/logoHeader.svg'
 import instagramLogo from '../assets/instagram.svg'
@@ -56,7 +56,7 @@ const MunchiesNav = styled.div`
 `
 const MunchiesLink = styled(Link)`
     display: block;
-    font-family: 'Montserrat-SemiBold';
+    font-weight: var(--scrannysFontLight);
     font-size: 18px;
     color: var(--scrannysWhite);
     letter-spacing: 1.5px;
@@ -84,7 +84,7 @@ const ButtonText = styled.div`
     text-align: center;
     line-height: 80px;
     text-transform: uppercase;
-    font-family: 'Montserrat-SemiBold';
+    font-weight: var(--scrannysFontLight);
     font-size: 14px;
     color: var(--scrannysWhite);
     letter-spacing: 1.17px;
@@ -115,7 +115,7 @@ function HeaderBar() {
       
     useEffect( () => {
         submenuTl.to( submenuRef, 0.5, { x: 0 } )
-    }, [])
+    }, [submenuTl])
 
     const submenuToggle = () => {
         submenuTl.reversed() ? submenuTl.play() : submenuTl.reverse()

@@ -13,7 +13,7 @@ const ProductBoxContainer = styled.div`
 `
 const ProductTitle = styled.p`
     display: inline-block;
-    font-family: var(--scrannysFontLight);
+    font-weight: var(--scrannysFontLight);
     font-size: 11px;
     letter-spacing: 0.83px;
     line-height: 14px;

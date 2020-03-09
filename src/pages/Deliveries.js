@@ -17,7 +17,7 @@ const Title = styled.h2`
     margin-top: 90px;
     text-transform: uppercase;
     text-align: center;
-    font-family: 'Montserrat-ExtraBold';
+    font-weight: var(--scrannysFontBold);;
     font-size: 28px;
     letter-spacing: 4.3px;
 `

@@ -29,13 +29,13 @@ const ProductDetailsContainer = styled.div`
     margin: 0 30px;
 `
 const Title = styled.h4`
-    font-family: var(--scrannysFontBold);
+    font-weight: var(--scrannysFontBold);
     font-size: 12px;
     /* margin: 0 30px; */
     line-height: 15px;
 `
 const Weight = styled.p`
-    font-family: var(--scrannysFontLight);
+    font-weight: var(--scrannysFontLight);
     font-size: 12px;
     line-height: 15px;
     margin-top: 5px;
@@ -43,12 +43,12 @@ const Weight = styled.p`
 const Stock = styled.p`
     position: absolute;
     bottom: 0;
-    font-family: var(--scrannysFontLight);
+    font-weight: var(--scrannysFontLight);
     font-size: 10px;
     line-height: 15px;
     margin-top: 8px;
     span{
-        font-family: var(--scrannysFontBold); 
+        font-weight: var(--scrannysFontBold); 
     }
 `
 const ProductFooterContainer = styled.div`
@@ -59,7 +59,7 @@ const Price = styled.div`
     display: inline-block;
     line-height: 34px;
     transform: translateY(1px);
-    font-family: var(--scrannysFontLight);
+    font-weight: var(--scrannysFontLight);
     font-size: 18px;
     letter-spacing: 0.9px;
 `
@@ -78,7 +78,7 @@ const AddItemButton = styled.button`
     cursor: ${ props => props.disabled ? "auto" : "pointer" };
 `
 const AddItemTitle = styled.h3`
-    font-family: var(--scrannysFontLight);
+    font-weight: var(--scrannysFontLight);
     font-size: 18px;
     color: var(--scrannysLightWhite);
     letter-spacing: 0.9px;

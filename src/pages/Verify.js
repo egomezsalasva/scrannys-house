@@ -30,7 +30,7 @@ const LogoProducts = styled.div`
     }
 `
 const VerifyText = styled.p`
-    font-family: 'Montserrat-SemiBold';
+    font-weight: var(--scrannysFontLight);
     line-height: 15px;
     font-size: 12px;
     color: var(--scrannysBlue);
@@ -60,7 +60,7 @@ const CityBox = styled.div`
     height: 46px;
     background: var(--scrannysOrange50);
     border-radius: 5px;
-    font-family: 'Montserrat-SemiBold';
+    font-weight: var(--scrannysFontLight);
     font-size: 12px;
     color: var(--scrannysBlue);
     letter-spacing: 1.72px;
@@ -75,7 +75,7 @@ const PostalBox = styled.input`
     height: 46px;
     background: var(--scrannysOrange50);
     border-radius: 5px;
-    font-family: 'Montserrat-SemiBold';
+    font-weight: var(--scrannysFontLight);
     font-size: 12px;
     color: var(--scrannysBlue);
     letter-spacing: 1.72px;
@@ -96,7 +96,7 @@ const VerifyButton = styled(Link)`
     height: 46px;
     background: var(--scrannysBlue);
     border-radius: 5px;
-    font-family: 'Montserrat-SemiBold';
+    font-weight: var(--scrannysFontLight);
     font-size: 12px;
     color: var(--scrannysLightWhite);
     letter-spacing: 1.72px;
@@ -115,7 +115,7 @@ const EnterGuestContainer = styled.div`
 `
 const GuestButton = styled(Link)`
     margin-top: 30px;
-    font-family: 'Montserrat-ExtraBold';
+    font-weight: var(--scrannysFontBold);
     line-height: 15px;
     font-size: 12px;
     color: var(--scrannysBlue);
@@ -128,7 +128,7 @@ const DeliveryTimesText = styled(VerifyText)`
     margin-top: 60px;
     text-transform: none;
     span{
-        font-family: 'Montserrat-ExtraBold'; 
+        font-weight: var(--scrannysFontBold);; 
     }
 `
 const InstagramButtonContainer = styled.div`

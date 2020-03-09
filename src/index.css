@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600,800&display=swap');
+
 :root{
   --scrannysGreen: #11CC16;
   --scrannysRed: #E3201B;
@@ -9,8 +11,9 @@
   --scrannysWhite: #FEF6EE;
   --scrannysLightWhite: #FEF8F3;
 
-  --scrannysFontLight: 'Montserrat-SemiBold';
-  --scrannysFontBold: 'Montserrat-ExtraBold'; 
+  --scrannysFontLight: 600;
+  --scrannysFontBold: 800;
+
 }
 
 *{
@@ -25,9 +28,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+  font-weight: var(--scrannysFontLight);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
