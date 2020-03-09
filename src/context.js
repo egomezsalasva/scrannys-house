@@ -26,8 +26,12 @@ export function DataProvider({children}) {
     }
 
     const localState = JSON.parse(localStorage.getItem("info"))
-    const [isGuestLocal, setIsGuestLocal] = useReducer(reducer, localState || isGuest)
+    // const [productsLocal] = useReducer(reducer, localState || products )
+    const [isGuestLocal] = useReducer(reducer, localState || isGuest)
 
+    // useEffect(() => {
+    //     localStorage.setItem("info", JSON.stringify(productsLocal));
+    // }, [productsLocal])
     useEffect(() => {
         localStorage.setItem("info", JSON.stringify(isGuestLocal));
     }, [isGuestLocal]);
