@@ -49,7 +49,7 @@ const ProductListContainer = styled.div`
     
 `
 
-//TODO Create shared styled components for filter pages
+//TODO Create shared styled components for filter pages or shared component with state changes for filter
 
 
 //Main Component
