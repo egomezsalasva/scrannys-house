@@ -112,7 +112,7 @@ function HeaderBar() {
 
     //BUG Animation not working on netlify
     let submenuRef = useRef(null);
-    let submenuTl = new TimelineMax( {paused: false, reversed: true} )
+    let submenuTl = new TimelineMax( {paused: true, reversed: true} )
       
     useEffect( () => {
         submenuTl.to( submenuRef, 0.5, { x: 0 } )

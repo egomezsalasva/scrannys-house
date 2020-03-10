@@ -1,12 +1,15 @@
 //Import Libraries
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import styled from 'styled-components'
+import { TimelineMax } from "gsap/all"
 //Import Context API (Data)
 import { DataContext } from '../../context'
 //Import Components
 import ProductBox from './ProductBox'
-import NoProductsBox from './NoProductsBox';
+import NoProductsBox from './NoProductsBox'
 import CantCheckoutBox from './CantCheckoutBox'
+import MinimumOrderBox from './MinimumOrderBox'
+import crossIcon from '../../assets/crossIcon.svg'
 
 
 //Styles
@@ -72,6 +75,7 @@ const CheckoutButton = styled.button`
    transform: translateY(-50%);
    background: var(--scrannysBlue);
    color: var(--scrannysLightWhite);
+   opacity: ${ props => props.disabled ? "0.5" : "1" };
    border-radius: 5px;
    position: absolute;
    right: 20px;
@@ -81,8 +85,33 @@ const CheckoutButton = styled.button`
    letter-spacing: 1.17px;
    outline: none;
    border: none;
-   cursor: pointer;
+   cursor: ${ props => props.disabled ? "auto" : "pointer" };
 `
+const MinimumOrderMessage = styled.div`
+   position: absolute;
+   width: 100%;
+   height: 80px;
+   bottom: 0;
+`
+const CloseButton = styled.div`
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    width: 30px;
+    height: 30px;
+    background: var(--scrannysRed);
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+`
+
 
 //Main Component
 function CartGuide({stripeToken}) {
@@ -118,10 +147,24 @@ function CartGuide({stripeToken}) {
         }
     }
 
-    //TODO Minimum order message disable checkout
-    //TODO if isGuest dissable checkout
+    //BUG Animation not working on netlify
+    let minimimOrderRef = useRef(null);
+    let minimumOrderTl = new TimelineMax( {paused: true, reversed: true} )
+      
+    useEffect( () => {
+        minimumOrderTl.to( minimimOrderRef, 0.5, { y: "-80px" } )
+    }, [minimumOrderTl])
 
-    
+    const CheckoutButtonConditional = () => {
+        if( dataContext.cartTotal >= 10 && dataContext.isGuest === false ){
+            return <CheckoutButton onClick={() => stripeCheckout()} >Checkout</CheckoutButton>
+        } else if (dataContext.isGuest === true) {
+            return <CheckoutButton disabled >Checkout</CheckoutButton>
+        } else {
+            return <CheckoutButton onClick={ () => minimumOrderTl.play() } >Checkout</CheckoutButton>
+        }
+    }
+
     return (
         <>
         <CartGuideContainer>
@@ -131,15 +174,24 @@ function CartGuide({stripeToken}) {
             <ProductsContainer>
                 { dataContext.isGuest ?  <CantCheckoutBox /> : null }
                 <CartBoxes />
+
+                <MinimumOrderMessage ref={ e => minimimOrderRef = e }>
+                    <CloseButton onClick={ () => minimumOrderTl.reverse() }>
+                        <img src={crossIcon} alt="close icon" />
+                    </CloseButton>
+                    <MinimumOrderBox/>
+                </MinimumOrderMessage>
+
             </ProductsContainer>
 
             <TotalCheckoutBar>
                 <TotalTitle>Total:</TotalTitle>
                 <TotalPrice>{"€ " + dataContext.cartTotal}</TotalPrice>
 
-                <CheckoutButton onClick={() => stripeCheckout()}>Checkout</CheckoutButton>
+                <CheckoutButtonConditional />
             </TotalCheckoutBar>
 
+            
         </CartGuideContainer>
         </>
     )
