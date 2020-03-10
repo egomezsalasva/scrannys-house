@@ -221,7 +221,7 @@ function Verify(props) {
             </FormValidationContainer>
             <VerifyOrText error={guestErrorStyle}>{guestErrorMessage}</VerifyOrText>
             <EnterGuestContainer>
-                <GuestButton to="/deliveries">VISIT AS A GUEST</GuestButton>
+                <GuestButton to="/deliveries" onClick={() => dataContext.setIsGuest(true)}>VISIT AS A GUEST</GuestButton>
             </EnterGuestContainer>
             <DeliveryTimesText>
                 Deliveries will be scheduled between <span>19:00</span> and <span>21:00</span> 
