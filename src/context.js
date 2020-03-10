@@ -1,11 +1,12 @@
 //Import Libraries
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 //Import Data from DB
 import PRODUCTS_DB from './data/data'
 
 
 //Create Context API Object
 export const DataContext = React.createContext()
+
 
 
 //Provider
@@ -16,7 +17,20 @@ export function DataProvider({children}) {
     const [cartTotal, setCartTotal] = useState(0)
     const [isGuest, setIsGuest] = useState(true)
 
-    //TODO localStorage for products and is guest
+    // let reducer = (info, newInfo) => {
+    //     if (newInfo === null) {
+    //         localStorage.removeItem("info");
+    //         return isGuest;
+    //     }
+    //     return { ...info, ...newInfo };
+    // }
+
+    // const localState = JSON.parse(localStorage.getItem("info"))
+    // const [isGuestLocal] = useReducer(reducer, localState || isGuest)
+    // useEffect(() => {
+    //     localStorage.setItem("info", JSON.stringify(isGuestLocal));
+    // }, [isGuestLocal]);
+
 
     //CREATING COPY OF DB DATA
     //(we want original DB to only be edited once the payment has been accepted)
@@ -121,6 +135,8 @@ export function DataProvider({children}) {
         "08037",
     ]
 
+    //BUG if the user types a valid post code and then changes to non valid still results in false
+    //Possibly issue with useEffect
     const checkPostCodeMatch = postCodeInput => {
         validPostCodes.map( postCode => {
             if(postCodeInput === postCode){
@@ -140,9 +156,9 @@ export function DataProvider({children}) {
             cartTotal,
             incrementQuantity,
             decrementQuantity,
+            checkPostCodeMatch,
             isGuest,
             setIsGuest,
-            checkPostCodeMatch,
         }}>
             {children}
         </DataContext.Provider>
