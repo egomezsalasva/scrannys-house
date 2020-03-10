@@ -7,7 +7,7 @@ import styled from 'styled-components'
 const ProductBoxContainer = styled.div`
     position: relative;
     width: 100%;
-    height: 100px;
+    height: 140px;
     background: var(--scrannysRed);
     margin-bottom: 5px;
 `
@@ -18,7 +18,7 @@ const ProductTitle = styled.p`
     letter-spacing: 0.83px;
     line-height: 14px;
     width: 100%;
-    padding: 0 30px;
+    padding: 0 20px;
     color: var(--scrannysLightWhite);
     margin-top: 13px;
     text-align: center;
@@ -29,7 +29,7 @@ const CantCheckoutBox = () => {
     return (
         <>
         <ProductBoxContainer>
-            <ProductTitle>Cant checkout as a guest please enter a valid post code if you with to purchase our products. You can check if you are on our delivery area on our DELIVERIES page</ProductTitle>        
+            <ProductTitle>Can't checkout as a guest please enter a valid post code to purchase our products. Check the delivery area in <br/>  OUR DELIVERIES PAGE <br/> or <br/> VERIFY YOUR POST CODE HERE </ProductTitle>        
         </ProductBoxContainer>
         </>
     ) 
