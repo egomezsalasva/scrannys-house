@@ -19,6 +19,8 @@ import Verify from './pages/Verify'
 
 //Main Component
 function App() {
+
+
   return (
     <>
     <DataProvider>

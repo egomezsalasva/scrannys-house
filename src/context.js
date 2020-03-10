@@ -17,7 +17,6 @@ export function DataProvider({children}) {
     const [isGuest, setIsGuest] = useState(true)
 
     //TODO localStorage for products and is guest
-    //TODO When on route enter "/" reset isGuest to true (only on route enter)
 
     //CREATING COPY OF DB DATA
     //(we want original DB to only be edited once the payment has been accepted)
@@ -122,11 +121,9 @@ export function DataProvider({children}) {
         "08037",
     ]
 
-    //BUG if the user types a valid post code and then changes to non valid still results in false
-    //Possibly issue with useEffect
     const checkPostCodeMatch = postCodeInput => {
         validPostCodes.map( postCode => {
-            if(parseInt(postCodeInput) === parseInt(postCode)){
+            if(postCodeInput === postCode){
                 setIsGuest(false)
             }
         })
@@ -144,6 +141,7 @@ export function DataProvider({children}) {
             incrementQuantity,
             decrementQuantity,
             isGuest,
+            setIsGuest,
             checkPostCodeMatch,
         }}>
             {children}

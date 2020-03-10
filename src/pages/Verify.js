@@ -1,7 +1,7 @@
 //Import Libraries
 import React, { useState, useEffect, useContext, useRef } from 'react'
 import styled from 'styled-components'
-import { Link } from "react-router-dom"
+import { Link, matchPath } from "react-router-dom"
 //Import Images
 import logoVerify from '../assets/logoVerify.svg'
 import instagramLogo from '../assets/instagram.svg'
@@ -167,6 +167,7 @@ function Verify(props) {
     const [guestErrorStyle, setGuestErrorStyle] = useState(false)
     const postCodeInputRef = useRef()
  
+    dataContext.setIsGuest(true)
 
     //State checks
     useEffect(() => {
@@ -213,6 +214,7 @@ function Verify(props) {
                         onChange={e => setPostCodeInput(e.target.value)}
                         onKeyPress={ e => handleEnterEvent(e.key) }
                         ref={postCodeInputRef}
+                        maxLength="5"
                     />
                     <VerifyButton to={ dataContext.isGuest === true ? "/" : "/all" } onClick={() => checkErrorMessage()}>VISIT SCRANNY’S HOUSE</VerifyButton>
                 </FormBox>
