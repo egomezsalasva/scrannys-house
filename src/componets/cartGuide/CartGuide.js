@@ -152,7 +152,7 @@ function CartGuide({stripeToken}) {
     let minimumOrderTl = new TimelineMax( {paused: true, reversed: true} )
       
     useEffect( () => {
-        minimumOrderTl.to( minimimOrderRef, 0.5, { y: "-80px" } )
+        minimumOrderTl.to( minimimOrderRef, 0.5, { bottom: "80px" } )
     }, [minimumOrderTl])
 
     const CheckoutButtonConditional = () => {
