@@ -1,7 +1,7 @@
 //Import Libraries
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import styled from 'styled-components'
-import { TimelineMax } from "gsap/all"
+import { gsap } from "gsap/all"
 //Import Context API (Data)
 import { DataContext } from '../../context'
 //Import Components
@@ -149,10 +149,10 @@ function CartGuide({stripeToken}) {
 
     //BUG Animation not working on netlify
     let minimimOrderRef = useRef(null);
-    let minimumOrderTl = new TimelineMax( {paused: true, reversed: true} )
+    let minimumOrderTl = gsap.timeline({paused: true, reversed: true})
       
     useEffect( () => {
-        minimumOrderTl.to( minimimOrderRef, 0.5, { bottom: "80px" } )
+        minimumOrderTl.to( minimimOrderRef, { duration: 0.5, y: "-80px" } )
     }, [minimumOrderTl])
 
     const CheckoutButtonConditional = () => {
