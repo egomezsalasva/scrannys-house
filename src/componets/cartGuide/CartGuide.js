@@ -147,7 +147,6 @@ function CartGuide({stripeToken}) {
         }
     }
 
-    //BUG Animation not working on netlify
     let minimimOrderRef = useRef(null);
     let minimumOrderTl = gsap.timeline({paused: true, reversed: true})
       

@@ -110,7 +110,6 @@ const InstagramButton = styled.div`
 //Main Component
 function HeaderBar() {
 
-    //BUG Animation not working on netlify
     let submenuRef = useRef(null);
     let submenuTl = gsap.timeline( {paused: true, reversed: true} )
       
