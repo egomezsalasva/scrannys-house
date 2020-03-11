@@ -1,8 +1,8 @@
 //Import Libraries
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
-import { TimelineMax } from "gsap/all"
+import { gsap } from "gsap"
 //Import Images
 import logoHeader from '../assets/logoHeader.svg'
 import instagramLogo from '../assets/instagram.svg'
@@ -112,7 +112,7 @@ function HeaderBar() {
 
     //BUG Animation not working on netlify
     let submenuRef = useRef(null);
-    let submenuTl = new TimelineMax( {paused: true, reversed: true} )
+    let submenuTl = gsap.timeline( {paused: true, reversed: true} )
       
     useEffect( () => {
         submenuTl.to( submenuRef, 0.5, { x: 0 } )
