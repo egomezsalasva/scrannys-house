@@ -17,19 +17,6 @@ export function DataProvider({children}) {
     const [cartTotal, setCartTotal] = useState(0)
     const [isGuest, setIsGuest] = useState(true)
 
-    // let reducer = (info, newInfo) => {
-    //     if (newInfo === null) {
-    //         localStorage.removeItem("info");
-    //         return isGuest;
-    //     }
-    //     return { ...info, ...newInfo };
-    // }
-
-    // const localState = JSON.parse(localStorage.getItem("info"))
-    // const [isGuestLocal] = useReducer(reducer, localState || isGuest)
-    // useEffect(() => {
-    //     localStorage.setItem("info", JSON.stringify(isGuestLocal));
-    // }, [isGuestLocal]);
 
 
     //CREATING COPY OF DB DATA
@@ -54,6 +41,7 @@ export function DataProvider({children}) {
         }
     //
 
+    
     //FIND CORRECT PRODUCT FROM PRODUCTS STATE ARRAY
     const getProductThroughID = idArg => {
         //See if Product ID from state matches the argument 
@@ -62,11 +50,13 @@ export function DataProvider({children}) {
         return productThroughID
     }
 
+
     //CALCULATE TOTAL
     const calculateCartTotal = () => {
         let cartTotal = products.reduce( (acc, item) => acc + item.cartQuantity * item.price, 0.0)
         setCartTotal(cartTotal.toFixed(2))
     }
+
 
     //EVENT LISTENERS
     const incrementQuantity = id => {
@@ -113,6 +103,7 @@ export function DataProvider({children}) {
         // product.totalPrice = (product.price * product.cartQuantity).toFixed(2)   
     }
 
+
     //VERIFY POST CODE
     const validPostCodes = [
         "08001",
@@ -135,7 +126,7 @@ export function DataProvider({children}) {
         "08037",
     ]
 
-    //BUG if the user types a valid post code and then changes to non valid still results in false
+
     //Possibly issue with useEffect
     const checkPostCodeMatch = postCodeInput => {
         validPostCodes.map( postCode => {
