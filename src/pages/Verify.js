@@ -10,6 +10,7 @@ import textureScrannys from '../assets/textureScrannys.png'
 import { DataContext } from '../context'
 
 //Styles
+/* containers */
 const VerifyContainer = styled.div`
     position: absolute;
     background: #FEF6EE url(${textureScrannys});
@@ -24,6 +25,7 @@ const VerifyCenteredContainer = styled.div`
     width: 100vw;
     transform: translateY(-50%);
 `
+/* logo */
 const LogoProducts = styled.div`
     width: 100%;
     height: var(--mHeight140px);
@@ -37,6 +39,7 @@ const LogoProducts = styled.div`
         transform: translateX(calc(-50% - 10px));
     }
 `
+/* text */
 const VerifyText = styled.p`
     font-weight: var(--scrannysFontLight);
     line-height: 15px;
@@ -49,16 +52,12 @@ const VerifyText = styled.p`
 const VerifyAreaText = styled(VerifyText)`
     margin-top: var(--mHeight70px);
 `
-const VerifyOrText = styled(VerifyText)`
-    color: ${props => props.error ? "var(--scrannysRed)" : "var(--scrannysBlue)"};
-    font-weight: ${props => props.error ? "var(--scrannysFontBold)" : "var(--scrannysFontLight)"};
-    margin-top: var(--mHeight30px);
-`
+/* form */
 const FormValidationContainer = styled.div`
     margin-top: var(--mHeight30px);
     text-align: center;
 `
-const FormBox = styled.div`
+const FormBgBox = styled.div`
     background: var(--scrannysOrange50over50);
     padding: 12px;
     border-radius: 5px;
@@ -118,6 +117,13 @@ const VerifyButton = styled(Link)`
     cursor: pointer;
     border: 1px solid var(--scrannysOrange50over50);
 `
+/* error message or OR text */
+const VerifyOrText = styled(VerifyText)`
+    color: ${props => props.error ? "var(--scrannysRed)" : "var(--scrannysBlue)"};
+    font-weight: ${props => props.error ? "var(--scrannysFontBold)" : "var(--scrannysFontLight)"};
+    margin-top: var(--mHeight30px);
+`
+/* enter as guest button */
 const EnterGuestContainer = styled.div`
     margin-top: 15px;
     text-align: center;
@@ -133,6 +139,7 @@ const GuestButton = styled(Link)`
     text-transform: uppercase;
     text-decoration: none;
 `
+/* delivery times text */
 const DeliveryTimesText = styled(VerifyText)`
     margin-top: var(--mHeight60px);
     text-transform: none;
@@ -140,6 +147,7 @@ const DeliveryTimesText = styled(VerifyText)`
         font-weight: var(--scrannysFontBold);; 
     }
 `
+/* instagram  button */
 const InstagramButtonContainer = styled.div`
     position: relative;
     margin-top: var(--mHeight50px);
@@ -217,7 +225,7 @@ function Verify(props) {
                 <VerifyAreaText>PLEASE VERIFY YOU ARE WITHIN OUR DELIVERY AREA</VerifyAreaText>
 
                 <FormValidationContainer>
-                    <FormBox>
+                    <FormBgBox>
                         <CityBox>Barcelona</CityBox>
                         <PostalBox 
                             type="text" 
@@ -233,7 +241,7 @@ function Verify(props) {
                             maxLength="5"
                         />
                         <VerifyButton to={ dataContext.isGuest === true ? "/" : "/all" } onClick={() => checkErrorMessage()}>VISIT SCRANNY’S HOUSE</VerifyButton>
-                    </FormBox>
+                    </FormBgBox>
                 </FormValidationContainer>
 
                 <VerifyOrText error={guestErrorStyle}>{guestErrorMessage}</VerifyOrText>
