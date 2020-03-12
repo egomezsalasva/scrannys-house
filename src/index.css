@@ -14,6 +14,16 @@
   --scrannysFontLight: 600;
   --scrannysFontBold: 800;
 
+  --zIndexVerifyPage: 1000;
+
+  --mHeight30px: 3.75vh;
+  --mHeight50px: 6.25vh;
+  --mHeight60px: 7.5vh;
+  --mHeight70px: 8.75vh;
+  --mHeight100px: 12.5vh;
+  --mHeight140px: 17.5vh;
+
+
 }
 
 *{

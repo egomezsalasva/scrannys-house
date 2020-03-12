@@ -1,7 +1,7 @@
 //Import Libraries
 import React, { useState, useEffect, useContext, useRef } from 'react'
 import styled from 'styled-components'
-import { Link, matchPath } from "react-router-dom"
+import { Link } from "react-router-dom"
 //Import Images
 import logoVerify from '../assets/logoVerify.svg'
 import instagramLogo from '../assets/instagram.svg'
@@ -10,23 +10,31 @@ import textureScrannys from '../assets/textureScrannys.png'
 import { DataContext } from '../context'
 
 //Styles
-const VerifyModalContaier = styled.div`
+const VerifyContainer = styled.div`
     position: absolute;
     background: #FEF6EE url(${textureScrannys});
     background-size: 200px;
     width: 100vw;
     min-height: 100vh;
-    z-index: 1000;
+    z-index: var(--zIndexVerifyPage);
+`
+const VerifyCenteredContainer = styled.div`
+    position: absolute;
+    margin-top: 50vh;
+    width: 100vw;
+    transform: translateY(-50%);
 `
 const LogoProducts = styled.div`
     width: 100%;
-    height: 140px;
-    margin-top: 100px;
+    height: var(--mHeight140px);
+    max-height: 140px;
+    margin-top: var(--mHeight50px);
     img{
-    position: absolute;
-    height: 140px;
-    left: 50%;
-    transform: translateX(calc(-50% - 10px));
+        position: absolute;
+        height: var(--mHeight140px);
+        max-height: 140px;
+        left: 50%;
+        transform: translateX(calc(-50% - 10px));
     }
 `
 const VerifyText = styled.p`
@@ -39,15 +47,15 @@ const VerifyText = styled.p`
     text-transform: uppercase;
 `
 const VerifyAreaText = styled(VerifyText)`
-    margin-top: 70px;
+    margin-top: var(--mHeight70px);
 `
 const VerifyOrText = styled(VerifyText)`
     color: ${props => props.error ? "var(--scrannysRed)" : "var(--scrannysBlue)"};
     font-weight: ${props => props.error ? "var(--scrannysFontBold)" : "var(--scrannysFontLight)"};
-    margin-top: 30px;
+    margin-top: var(--mHeight30px);
 `
 const FormValidationContainer = styled.div`
-    margin-top: 30px;
+    margin-top: var(--mHeight30px);
     text-align: center;
 `
 const FormBox = styled.div`
@@ -115,7 +123,7 @@ const EnterGuestContainer = styled.div`
     text-align: center;
 `
 const GuestButton = styled(Link)`
-    margin-top: 30px;
+    margin-top: var(--mHeight30px);
     font-weight: var(--scrannysFontBold);
     line-height: 15px;
     font-size: 12px;
@@ -126,7 +134,7 @@ const GuestButton = styled(Link)`
     text-decoration: none;
 `
 const DeliveryTimesText = styled(VerifyText)`
-    margin-top: 60px;
+    margin-top: var(--mHeight60px);
     text-transform: none;
     span{
         font-weight: var(--scrannysFontBold);; 
@@ -134,17 +142,17 @@ const DeliveryTimesText = styled(VerifyText)`
 `
 const InstagramButtonContainer = styled.div`
     position: relative;
-    background: red;
-    margin-top: 50px;
+    margin-top: var(--mHeight50px);
 `
 const InstagramButton = styled.div`
-    position: absolute;
+    position: relative;
     width: 40px;
     height: 40px;
     background: var(--scrannysBlue);
     border-radius: 5px;
     left: 50%;
     transform: translateX(-50%);
+    margin-bottom: var(--mHeight50px);
     cursor: pointer;
     img{
         position: absolute;
@@ -154,11 +162,10 @@ const InstagramButton = styled.div`
     }
 `
 
-
 //Main Component
 function Verify(props) {
 
-
+    //Import Global Data
     const dataContext = useContext(DataContext)
 
     //State
@@ -167,11 +174,13 @@ function Verify(props) {
     const [guestErrorStyle, setGuestErrorStyle] = useState(false)
     const postCodeInputRef = useRef()
  
+    //Reset isGuest State on page load
     dataContext.setIsGuest(true)
 
     //State checks
     useEffect(() => {
-        //Constantly checks post code match to change the to="" property in react router button
+        /* Constantly checks post code match to change the 
+        to="/" attribute in react router button */
         dataContext.checkPostCodeMatch(postCodeInput)
     })
     
@@ -180,13 +189,16 @@ function Verify(props) {
         //On button click checks if it should display error message if postcode dosnt match
         if(dataContext.isGuest === true) {
             setGuestErrorMessage("WE ARE SORRY BUT YOUR POST CODE IS NOT WITHIN OUR DELIVERY AREA, YOU CAN TRY AGAIN OR")
+            /* For styled components to change error styling */
             setGuestErrorStyle(true)
+            /* If you press visit button or enter and your post code 
+            isn't valid you get the postcode input on focus */
             postCodeInputRef.current.select();
         }
     }
     const handleEnterEvent = keyPressed => {
         if(keyPressed === 'Enter'){
-            if(dataContext.isGuest === true ) {
+            if(dataContext.isGuest === true ){
                 checkErrorMessage()
             } else {
                 props.history.push('/all');
@@ -197,47 +209,56 @@ function Verify(props) {
 
     return (
         <>
-        <VerifyModalContaier>
-            <LogoProducts><img src={logoVerify} alt="logo" /></LogoProducts>
-            <VerifyAreaText>PLEASE VERIFY YOU ARE WITHIN OUR DELIVERY AREA</VerifyAreaText>
-            <FormValidationContainer>
-                <FormBox>
-                    <CityBox>Barcelona</CityBox>
-                    <PostalBox 
-                        type="text" 
-                        name="Post Code" 
-                        placeholder="ENTER POST CODE"
-                        onFocus={(e) => e.target.placeholder = ""} 
-                        onBlur={(e) => e.target.placeholder = "ENTER POST CODE"}
-                        autoComplete="off"
-                        value={postCodeInput}
-                        onChange={e => setPostCodeInput(e.target.value)}
-                        onKeyPress={ e => handleEnterEvent(e.key) }
-                        ref={postCodeInputRef}
-                        maxLength="5"
-                    />
-                    <VerifyButton to={ dataContext.isGuest === true ? "/" : "/all" } onClick={() => checkErrorMessage()}>VISIT SCRANNY’S HOUSE</VerifyButton>
-                </FormBox>
-            </FormValidationContainer>
-            <VerifyOrText error={guestErrorStyle}>{guestErrorMessage}</VerifyOrText>
-            <EnterGuestContainer>
-                <GuestButton to="/deliveries" onClick={() => dataContext.setIsGuest(true)}>VISIT AS A GUEST</GuestButton>
-            </EnterGuestContainer>
-            <DeliveryTimesText>
-                Deliveries will be scheduled between <span>19:00</span> and <span>21:00</span> 
-                <br/>
-                <br/>
-                Orders processed after 19:00 will be scheduled for the next working day
-            </DeliveryTimesText>
-            <InstagramButtonContainer>
-                <a href="https://www.instagram.com/scrannyshouse/" target="_blank">
-                    <InstagramButton>
-                        <img src={instagramLogo} alt="instagram logo" />
-                    </InstagramButton>
-                </a>
-            </InstagramButtonContainer>
-            
-        </VerifyModalContaier>
+        <VerifyContainer>
+            <VerifyCenteredContainer>
+
+                <LogoProducts><img src={logoVerify} alt="logo" /></LogoProducts>
+
+                <VerifyAreaText>PLEASE VERIFY YOU ARE WITHIN OUR DELIVERY AREA</VerifyAreaText>
+
+                <FormValidationContainer>
+                    <FormBox>
+                        <CityBox>Barcelona</CityBox>
+                        <PostalBox 
+                            type="text" 
+                            name="Post Code" 
+                            placeholder="ENTER POST CODE"
+                            onFocus={(e) => e.target.placeholder = ""} 
+                            onBlur={(e) => e.target.placeholder = "ENTER POST CODE"}
+                            autoComplete="off"
+                            value={postCodeInput}
+                            onChange={e => setPostCodeInput(e.target.value)}
+                            onKeyPress={ e => handleEnterEvent(e.key) }
+                            ref={postCodeInputRef}
+                            maxLength="5"
+                        />
+                        <VerifyButton to={ dataContext.isGuest === true ? "/" : "/all" } onClick={() => checkErrorMessage()}>VISIT SCRANNY’S HOUSE</VerifyButton>
+                    </FormBox>
+                </FormValidationContainer>
+
+                <VerifyOrText error={guestErrorStyle}>{guestErrorMessage}</VerifyOrText>
+
+                <EnterGuestContainer>
+                    <GuestButton to="/deliveries" onClick={() => dataContext.setIsGuest(true)}>VISIT AS A GUEST</GuestButton>
+                </EnterGuestContainer>
+
+                <DeliveryTimesText>
+                    Deliveries will be scheduled between <span>19:00</span> and <span>21:00</span> 
+                    <br/>
+                    <br/>
+                    Orders processed after 19:00 will be scheduled for the next working day
+                </DeliveryTimesText>
+
+                <InstagramButtonContainer>
+                    <a href="https://www.instagram.com/scrannyshouse/" target="_blank">
+                        <InstagramButton>
+                            <img src={instagramLogo} alt="instagram logo" />
+                        </InstagramButton>
+                    </a>
+                </InstagramButtonContainer>
+
+            </VerifyCenteredContainer>  
+        </VerifyContainer>
         </>
     )
 }

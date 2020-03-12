@@ -1,6 +1,6 @@
 //Import Libraries
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, matchPath } from "react-router-dom"
 //Import Context API
 import { DataProvider } from './context' 
 //Import Components
@@ -20,15 +20,18 @@ import Verify from './pages/Verify'
 //Main Component
 function App() {
 
+  const verifyPage = matchPath( "/", { path: "/", exact: true, strict: true } )
+
+  console.log(verifyPage.url)
 
   return (
     <>
     <DataProvider>
       <Router>
 
-      <HeaderBar />
-      <CartGuide stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" />
-         
+      { verifyPage.url === "/" ? null : <HeaderBar /> }
+      { verifyPage.url === "/" ? null : <CartGuide stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" /> }
+        
       <Switch>
         <Route exact path="/deliveries" component={Deliveries} />
         <Route path="/crisps" component={Crisps} />
