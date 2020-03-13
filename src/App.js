@@ -29,8 +29,8 @@ function App() {
     <DataProvider>
       <Router>
 
-      { verifyPage.url === "/" ? null : <HeaderBar /> }
-      { verifyPage.url === "/" ? null : <CartGuide stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" /> }
+      <HeaderBar />
+      <CartGuide stripeToken="pk_test_THMmkRyxUjPhHmv4shPG6fM900TaScq2Uf" />
         
       <Switch>
         <Route exact path="/deliveries" component={Deliveries} />
